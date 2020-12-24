@@ -2,8 +2,6 @@ API Code Quiz
 =====
 ### Homework assignment for week 4 of bootcamp
 
-Acceptance Criteria:
-
 #### User Story
 
 ```
