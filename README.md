@@ -2,6 +2,12 @@ API Code Quiz
 =====
 ### Homework assignment for week 4 of bootcamp
 
+After learning about API, following a week on javascript, 
+I was given the assignment to make an interactive quiz that covers the topics
+of APIs
+I have included the user story and acceptance criteria, as provided to me, at the bottom of the README. 
+
+
 #### User Story
 
 ```
