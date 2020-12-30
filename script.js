@@ -21,6 +21,7 @@ var timerDiv = document.querySelector("#timer"),
     saveScoreBtn = document.querySelector("#save-score-btn"),
     userChosenName = document.querySelector("#user-chosen-name"),
     goBackBtn = document.querySelectorAll("#go-back"),
+    clearHighScoresBtn = document.querySelector("#clear-high-scores"),
 
     score = 0,
     timeLeft = 60,
@@ -111,13 +112,15 @@ function saveScore(event) {
             score: thisScore
         };
 
+
         savedHighScoresArr.push(thisToSave);
         storeScores();
+        highscoresList.innerHTML = '';
+        renderScores();
         hide(finalScore);
         show(afterSaveScreen);
     }
 };
-
 
 function storeScores() {
     localStorage.setItem("saved-scores", JSON.stringify(savedHighScoresArr));
@@ -135,19 +138,45 @@ function goBack(event) {
     };
 };
 
-function renderScores() {
-    for (let i = 0; i < savedHighScoresArr; i++) {
-        var scoreToList = document.createElement("li");
-        scoreToList.textContent = savedHighScoresArr[i];
-
-        highscoresList.appendChild(scoreToList);
+function clearHighScores() {
+    for (let i = 0; i < savedHighScoresArr.length;) {
+        savedHighScoresArr.pop();
     }
-}
+    console.log(savedHighScoresArr);
+    storeScores();
+    renderScores();
+};
+
+function renderScores() {
+    if (savedHighScoresArr.length < 1) {
+        highscoresList.innerHTML = ''
+    } else {
+        for (let i = 0; i < savedHighScoresArr.length; i++) {
+            var tr = document.createElement("tr");
+
+            var th = document.createElement("th");
+            th.setAttribute("scope", "row");
+            th.innerHTML = (i+1);
+
+            var nameforlist = document.createElement("td");
+            nameforlist.innerHTML = savedHighScoresArr[i].name;
+
+            var scoreforlist = document.createElement("td");
+            scoreforlist.innerHTML = savedHighScoresArr[i].score;
+
+            tr.appendChild(th);
+            tr.appendChild(nameforlist);
+            tr.appendChild(scoreforlist);
+            highscoresList.appendChild(tr);
+        };
+    };
+};
 
 function init() {
     localScores = JSON.parse(localStorage.getItem("saved-scores"));
 
     if (!localScores) {
+        console.log("no scores");
         return;
     } else {
         savedHighScoresArr = localScores;
@@ -181,5 +210,8 @@ document.addEventListener("click", goBack);
 
 // handler for view high scores
 viewHighScoreBtn.addEventListener("click", viewHighScores);
+
+// handler for clearing the high scores
+clearHighScoresBtn.addEventListener("click", clearHighScores);
 
 

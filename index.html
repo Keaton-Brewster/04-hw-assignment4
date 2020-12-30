@@ -15,13 +15,15 @@
 </head>
 
 <body class="px-5 py-3">
+
+    
     <div class="mb-5 justify-content-between">
         <button id="view-high-scores" class="btn btn-outline-info">View High-scores</button>
         <div id="timer" class="hide">Time left: <span id="timer-span"></span> seconds</div>
     </div>
 
-    <div id="start-page" class="p-auto m-auto text-center" style="width: fit-content;">
 
+    <div id="start-page" class="p-auto m-auto text-center" style="width: fit-content;">
         <div class="m-auto">
             <h1 class="display-2">API Coding Quiz</h1>
         </div>
@@ -29,8 +31,8 @@
             <h4>Test your knowledge with this short quiz on APIs and coding practices!</h4>
         </div>
         <button id="start-quiz-btn" class="btn-lg btn-primary">Start Quiz</button>
-
     </div>
+
 
     <div id="correct-notif" class="p-auto m-auto hide" style="width: fit-content;">
         <h3>Correct!</h3>
@@ -38,6 +40,7 @@
     <div id="wrong-notif" class="p-auto m-auto hide" style="width: fit-content;">
         <h3>Wrong!</h3>
     </div>
+
 
     <div id="all-questions">
         <div id="first-Q" class="p-auto m-auto hide" style="width: 500px;">
@@ -81,6 +84,7 @@
         </div>
     </div>
 
+
     <div id="final-score" class="p-auto m-auto text-center hide" style="width: fit-content;">
         <p class="display-4">Your final score is: <span id="final-score-span"></span></p>
         Save your high score?
@@ -90,6 +94,7 @@
         </form>
     </div>
 
+
     <div id="after-save" class="text-center hide">
         <p class="display-5">Success!</p>
         <button id="go-back" class="btn btn-lg btn-outline-primary">Go back</button>
@@ -97,9 +102,22 @@
 
 
     <div id="high-scores" class="p-auto m-auto hide" style="width: fit-content;">
-        <ul id="list-of-scores"></ul>
-        <button id="go-back" class="btn-lg btn-outline-primary">Go back</button>
-        <button id="clear-high-scores" class="btn-lg btn-outline-danger">Clear high-scores</button>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Score</th>
+                </tr>
+            </thead>
+            <tbody id="list-of-scores">
+
+            </tbody>
+
+            <footer>
+                <button id="go-back" class="btn-lg btn-outline-primary">Go back</button>
+                <button id="clear-high-scores" class="btn-lg btn-outline-danger">Clear high-scores</button>
+            </footer>
     </div>
 
     <!-- bootstrap script plugins -->
