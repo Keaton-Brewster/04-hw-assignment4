@@ -17,6 +17,7 @@ var timerDiv = document.querySelector("#timer"),
     wrongNotif = document.querySelector("#wrong-notif"),
 
     // buttons and inputs
+    allButtons = document.querySelectorAll("input[type=button]"),
     startQuizBtn = document.querySelector("#start-quiz-btn"),
     viewHighScoreBtn = document.querySelector("#view-high-scores"),
     saveScoreBtn = document.querySelector("#save-score-btn"),
@@ -26,6 +27,7 @@ var timerDiv = document.querySelector("#timer"),
 
     score = 0,
     timeLeft = 60,
+    // questionsAnswered = 0,
 
     savedHighScoresArr = [];
 
@@ -33,6 +35,7 @@ var timerDiv = document.querySelector("#timer"),
 init();
 
 function startQuiz() {
+    enable(allButtons);
     clearInterval(timer);
     score = 0;
     timeLeft = 60;
@@ -78,19 +81,23 @@ function checkAnswer(page, nextPage) {
                 score += 7;
                 console.log(score);
                 show(correctNotif);
+                disable(allButtons);
                 setTimeout(() => {
                     hide(page)
                     hide(correctNotif)
                     show(nextPage);
+                    enable(allButtons);
                 }, 1000);
             }
             else if (answer === "wrong") {
                 timeLeft -= 7
                 show(wrongNotif);
+                disable(allButtons);
                 setTimeout(() => {
                     hide(page)
                     hide(wrongNotif);
                     show(nextPage);
+                    enable(allButtons);
                 }, 1000);
             };
             // check to see if the last question has been answered, and if so end the test and give results
@@ -116,24 +123,21 @@ function endQuiz() {
 function saveScore(event) {
     event.preventDefault();
     if (!userChosenName.value) {
-
+        return;
     } else {
         var thisName = userChosenName.value.trim('');
         thisScore = score + timeLeft;
-
         var thisToSave = {
             name: thisName,
             score: thisScore
         };
-
-
         savedHighScoresArr.push(thisToSave);
         storeScores();
         highscoresList.innerHTML = '';
         renderScores();
         hide(finalScore);
         show(afterSaveScreen);
-    }
+    };
 };
 
 function storeScores() {
@@ -210,6 +214,18 @@ function show(ele) {
     ele.classList.remove("hide");
 }
 
+
+THESE DO NOT WORK YAY
+function enable(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        allButtons[i].setAttribute("disabled", "false")
+    };
+};
+function disable(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        allButtons[i].setAttribute("disabled", "true")
+    };
+};
 
 startQuizBtn.addEventListener("click", startQuiz); // start quiz button
 

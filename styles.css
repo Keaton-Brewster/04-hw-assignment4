@@ -18,6 +18,12 @@ button:focus {
     border-style: none;
     border-radius: 5px;
 }
+.final-score {
+    color: white;
+}
+#start-page {
+    width: 40em;
+}
 #wrong-notif {
     background-color: #b51e2bd5;
 }

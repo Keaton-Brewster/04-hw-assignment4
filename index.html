@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>API Quiz</title>
     <!-- reset CSS -->
     <link rel="stylesheet" href="reset.css">
     <!-- bootstrap CSS -->
@@ -23,14 +23,10 @@
     </div>
 
 
-    <div id="start-page" class="p-auto m-auto card text-center" style="width: 60em;">
-
-            <h1 class="display-2 card header">API Coding Quiz</h1>
-
-
-            <h4 class="card-body">Test your knowledge with this short quiz on APIs and coding practices!</h4>
-
-        <button id="start-quiz-btn" class="btn-lg btn-outline-success">Start Quiz</button>
+    <div id="start-page" class="p-auto m-auto card text-center" style="width: 40em;">
+        <h1 class="display-3 card header">API Coding Quiz</h1>
+        <h4 class="card-body">Test your knowledge with this short quiz on APIs and coding practices!</h4>
+        <button id="start-quiz-btn" class="card-footer btn-lg btn-outline-success">Start Quiz</button>
     </div>
 
 
@@ -84,7 +80,7 @@
                 <button id="wrong" class="row m-1 btn-primary">404</button>
             </div>
         </div>
-        
+
         <div id="correct-notif" class="p-auto m-auto notif hide" style="width: fit-content;">
             <h3>Correct!</h3>
         </div>
@@ -96,7 +92,7 @@
 
     <div id="final-score" class="p-auto m-auto text-center hide" style="width: fit-content;">
         <p class="display-4">Your final score is: <span id="final-score-span"></span></p>
-        Save your high score?
+        <h5>Save your high score?</h5>
         <form>
             <input id="user-chosen-name" placeholder="Your name" type="text">
             <button id="save-score-btn" class="btn-lg btn-success">Save</button>
@@ -106,8 +102,8 @@
 
 
     <div id="after-save" class="text-center hide">
-        <p class="display-5">Success!</p>
-        <button id="go-back" class="btn btn-lg btn-outline-primary">Go back</button>
+        <p class="display-4">Success!</p>
+        <button id="go-back" class="btn-lg btn-primary">Go back</button>
     </div>
 
 
