@@ -16,7 +16,7 @@
 
 <body class="px-5 py-3">
 
-    
+
     <div class="mb-5 justify-content-between">
         <button id="view-high-scores" class="btn btn-outline-info">View High-scores</button>
         <div id="timer" class="hide">Time left: <span id="timer-span"></span> seconds</div>
@@ -101,8 +101,8 @@
     </div>
 
 
-    <div id="high-scores" class="p-auto m-auto hide" style="width: fit-content;">
-        <table class="table table-striped">
+    <div id="high-scores" class="p-auto m-auto card hide" style="width: fit-content;">
+        <table class="table table-striped card-body">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -110,14 +110,13 @@
                     <th scope="col">Score</th>
                 </tr>
             </thead>
-            <tbody id="list-of-scores">
+            <tbody id="list-of-scores"></tbody>
+        </table>
 
-            </tbody>
-
-            <footer>
-                <button id="go-back" class="btn-lg btn-outline-primary">Go back</button>
-                <button id="clear-high-scores" class="btn-lg btn-outline-danger">Clear high-scores</button>
-            </footer>
+        <footer class="card-footer">
+            <button id="go-back" class="btn-lg btn-outline-primary">Go back</button>
+            <button id="clear-high-scores" class="btn-lg btn-outline-danger">Clear high-scores</button>
+        </footer>
     </div>
 
     <!-- bootstrap script plugins -->
