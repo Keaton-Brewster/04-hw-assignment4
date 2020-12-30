@@ -17,7 +17,7 @@ var timerDiv = document.querySelector("#timer"),
     wrongNotif = document.querySelector("#wrong-notif"),
 
     // buttons and inputs
-    allButtons = document.querySelectorAll("input[type=button]"),
+    allButtons = document.querySelectorAll("button"),
     startQuizBtn = document.querySelector("#start-quiz-btn"),
     viewHighScoreBtn = document.querySelector("#view-high-scores"),
     saveScoreBtn = document.querySelector("#save-score-btn"),
@@ -140,10 +140,6 @@ function saveScore(event) {
     };
 };
 
-function storeScores() {
-    localStorage.setItem("saved-scores", JSON.stringify(savedHighScoresArr));
-    userChosenName.innerHTML = '';
-};
 
 function goBack(event) {
     event.preventDefault();
@@ -207,23 +203,30 @@ function init() {
     renderScores();
 };
 
+function storeScores() {
+    localStorage.setItem("saved-scores", JSON.stringify(savedHighScoresArr));
+    userChosenName.innerHTML = '';
+};
+
+// main functions for showing and hiding divs and buttons and such, so that
+// it appears as though you are going through different webpages, but it is all still done inside one webpage. 
 function hide(ele) {
     ele.classList.add("hide");
-}
+};
 function show(ele) {
     ele.classList.remove("hide");
-}
+};
 
-
-THESE DO NOT WORK YAY
+// functions to enable and disable buttons for the answerCheck()
+// so that when you chose an answer, you cant also click a bunch of other answers before the next question comes up. 
 function enable(arr) {
     for (let i = 0; i < arr.length; i++) {
-        allButtons[i].setAttribute("disabled", "false")
+        allButtons[i].disabled = false;
     };
 };
 function disable(arr) {
     for (let i = 0; i < arr.length; i++) {
-        allButtons[i].setAttribute("disabled", "true")
+        allButtons[i].disabled = true
     };
 };
 
