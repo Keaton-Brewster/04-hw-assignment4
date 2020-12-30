@@ -27,18 +27,22 @@ var timerDiv = document.querySelector("#timer"),
 
     score = 0,
     timeLeft = 60,
-    // questionsAnswered = 0,
 
     savedHighScoresArr = [];
 
 // initializing function
 init();
 
+// function that runs when you click "start quiz"
 function startQuiz() {
+    // enable all buttons, in case any were left disabled after the last quiz
     enable(allButtons);
+    // clear the timer interval so that when you start a new quiz, you start with a fresh timer, then set the timer
     clearInterval(timer);
-    score = 0;
     timeLeft = 60;
+    // make sure the score starts at 0 so you don't get your last results added to your next quiz. 
+    score = 0;
+    // timer starts at 60 'seconds'
     timerSpan.innerHTML = timeLeft;
 
     show(allQuestionsDiv);
@@ -47,21 +51,17 @@ function startQuiz() {
     hide(startPage);
     hide(viewHighScoreBtn);
 
+    // timer interval. 
     timer = setInterval(() => {
         timeLeft--;
         timerSpan.innerHTML = timeLeft;
         if (timeLeft < 1) {
+            // end the quiz if you run out of time. 
             endQuiz();
         }
     }, 1000);
 };
 
-function viewHighScores() {
-    show(highscoresDiv);
-    hide(viewHighScoreBtn);
-    hide(startPage);
-    hide(finalScore);
-}
 // This is the function that gets run when you choose an answer in the quiz.
 function checkAnswer(page, nextPage) {
     // I couldn't figure out how to add an event through external arguments
@@ -110,6 +110,7 @@ function checkAnswer(page, nextPage) {
     });
 };
 
+// function to end the quiz, either when you finish answering all the questions, or if the time runs out
 function endQuiz() {
     clearInterval(timer);
     hide(timerDiv);
@@ -118,6 +119,15 @@ function endQuiz() {
     show(finalScore);
     finalScoreSpan.innerHTML = score + timeLeft // + timeLeft gives the user a bonus the faster they can complete the quiz!;
     return;
+};
+
+// this function here shows the high scores screen. 
+// does so by the use of add and removing classes that CSS is influencing, with the use of "display: none;"
+function viewHighScores() {
+    show(highscoresDiv);
+    hide(viewHighScoreBtn);
+    hide(startPage);
+    hide(finalScore);
 };
 
 function saveScore(event) {
@@ -133,13 +143,14 @@ function saveScore(event) {
         };
         savedHighScoresArr.push(thisToSave);
         storeScores();
+        // clear the list of any previously rendered scores, and THEN
         highscoresList.innerHTML = '';
+        // Re render the list of scores stored in the local storage. 
         renderScores();
         hide(finalScore);
         show(afterSaveScreen);
     };
 };
-
 
 function goBack(event) {
     event.preventDefault();
@@ -203,6 +214,7 @@ function init() {
     renderScores();
 };
 
+// here is the little function that stores the scores objects to the local storage with the use of JSON
 function storeScores() {
     localStorage.setItem("saved-scores", JSON.stringify(savedHighScoresArr));
     userChosenName.innerHTML = '';
