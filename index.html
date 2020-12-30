@@ -14,16 +14,89 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-    <a href="#" id="view-high-scores">View High-scores</a>
-    <div>Time<span id="timer"></span></div>
-    <main>
-        <h1>API Coding Quiz</h1>
-        <p></p>
-        <button id="start-quiz">Start Quiz</button>
-    </main>
+<body class="px-5 py-3">
+    <div class="mb-5 row justify-content-between">
+        <button id="view-high-scores" class="btn btn-outline-info">View High-scores</button>
+        <div id="timer" class="col-6 text-right hide">Time left: <span id="timer-span"></span> seconds</div>
+    </div>
+
+    <div id="start-page" class="p-auto m-auto text-center" style="width: fit-content;">
+
+        <div class="m-auto">
+            <h1 class="display-2">API Coding Quiz</h1>
+        </div>
+        <div class="row m-auto">
+            <h4>Test your knowledge with this short quiz on APIs and coding practices!</h4>
+        </div>
+        <button id="start-quiz-btn" class="btn-lg btn-primary">Start Quiz</button>
+
+    </div>
+
+    <div id="correct-notif" class="p-auto m-auto hide" style="width: fit-content;">
+        <h3>Correct!</h3>
+    </div>
+    <div id="wrong-notif" class="p-auto m-auto hide" style="width: fit-content;">
+        <h3>Wrong!</h3>
+    </div>
+
+    <div id="all-questions">
+        <div id="first-Q" class="p-auto m-auto hide" style="width: 500px;">
+            <h2>1: Web API supports which of the following protocol?</h2>
+            <button id="wrong" class="row m-1 btn-primary">TCP</button>
+            <button id="correct" class="row m-1 btn-primary">HTTP</button>
+            <button id="wrong" class="row m-1 btn-primary">Soap</button>
+            <button id="wrong" class="row m-1 btn-primary">All of the above</button>
+        </div>
+
+        <div id="second-Q" class="p-auto m-auto hide" style="width: 500px;">
+            <h2>2: Which of the following .NET frameworks support Web API?</h2>
+            <button id="wrong" class="row m-1 btn-primary">.NET 2.0</button>
+            <button id="wrong" class="row m-1 btn-primary">.NET 3.0</button>
+            <button id="wrong" class="row m-1 btn-primary">.NET 3.5</button>
+            <button id="correct" class="row m-1 btn-primary">.NET 4.0</button>
+        </div>
+
+        <div id="third-Q" class="p-auto m-auto hide" style="width: 500px;">
+            <h2>3: Which of the following statements is TRUE?</h2>
+            <button id="wrong" class="row m-1 btn-primary">Web API can be configured using web.config</button>
+            <button id="correct" class="row m-1 btn-primary">Web API can only be configured by code</button>
+            <button id="wrong" class="row m-1 btn-primary">Web API can be configured using app.config</button>
+            <button id="wrong" class="row m-1 btn-primary">None of the above</button>
+        </div>
+
+        <div id="fourth-Q" class="p-auto m-auto hide" style="width: 500px;">
+            <h2>4: Which of the following types of routing is supported in Web API 2?</h2>
+            <button id="wrong" class="row m-1 btn-primary">Attribute routing</button>
+            <button id="wrong" class="row m-1 btn-primary">Convention-based routing</button>
+            <button id="correct" class="row m-1 btn-primary">Both</button>
+            <button id="wrong" class="row m-1 btn-primary">Neither</button>
+        </div>
+
+        <div id="fifth-Q" class="p-auto m-auto hide" style="width: 500px;">
+            <h2>5: Web API sends which of the following status code on successful execution?</h2>
+            <button id="correct" class="row m-1 btn-primary">200</button>
+            <button id="wrong" class="row m-1 btn-primary">201</button>
+            <button id="wrong" class="row m-1 btn-primary">500</button>
+            <button id="wrong" class="row m-1 btn-primary">404</button>
+        </div>
+    </div>
+
+    <div id="final-score" class="p-auto m-auto text-center hide" style="width: fit-content;">
+        <p class="display-4">Your final score is: <span id="final-score-span"></span></p>
+        Save your high score?
+        <form>
+            <input id="user-chosen-name" placeholder="Your name" type="text">
+            <button id="save-score-btn" class="btn btn-success">Save</button>
+        </form>
+    </div>
+
+    <div id="after-save" class="text-center hide">
+        <p class="display-5">Success!</p>
+        <button id="go-back">Go back</button>
+    </div>
 
 
+    <div id="high-scores" class="p-auto m-auto hide" style="width: fit-content;"></div>
 
     <!-- bootstrap script plugins -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
