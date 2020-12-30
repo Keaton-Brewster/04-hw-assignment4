@@ -1,11 +1,10 @@
-.hide {
-    display: none;
-}
+
 
 button {
     border-radius: 5px;
     border-style: none;
     padding: 5px 15px;
+    margin: 10px 1px;
 }
 button:focus {
     outline: none;
@@ -13,22 +12,20 @@ button:focus {
 .question {
     width: 50em;
 }
-.notif {
-    padding: 30px 70px;
-    border-style: none;
-    border-radius: 5px;
-}
 .final-score {
     color: white;
+}
+.il-block {
+    display: inline-block;
 }
 #start-page {
     width: 40em;
 }
-#wrong-notif {
-    background-color: #b51e2bd5;
+.wrong {
+    background-color: #b51e2b;
 }
-#correct-notif {
-    background-color: #34ac0cc2;
+.correct {
+    background-color: #34ac0c;
 }
 #timer {
     color: white;
@@ -42,4 +39,9 @@ button:focus {
 #user-chosen-name:focus {
     outline: none;
     background-color: rgb(192, 192, 192);
+}
+
+/* hide must be loaded last so that it always takes priority */
+.hide {
+    display: none;
 }
