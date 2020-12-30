@@ -13,8 +13,6 @@ var timerDiv = document.querySelector("#timer"),
     highscoresDiv = document.querySelector("#high-scores"),
     highscoresList = document.querySelector("#list-of-scores"),
     afterSaveScreen = document.querySelector("#after-save"),
-    correctNotif = document.querySelector("#correct-notif"),
-    wrongNotif = document.querySelector("#wrong-notif"),
 
     // buttons and inputs
     allButtons = document.querySelectorAll("button"),
@@ -27,6 +25,7 @@ var timerDiv = document.querySelector("#timer"),
 
     score = 0,
     timeLeft = 60,
+    timeElapsed = 0;
 
     savedHighScoresArr = [];
 
@@ -40,6 +39,7 @@ function startQuiz() {
     // clear the timer interval so that when you start a new quiz, you start with a fresh timer, then set the timer
     clearInterval(timer);
     timeLeft = 60;
+    timeElapsed = 0;
     // make sure the score starts at 0 so you don't get your last results added to your next quiz. 
     score = 0;
     // timer starts at 60 'seconds'
@@ -54,6 +54,7 @@ function startQuiz() {
     // timer interval. 
     timer = setInterval(() => {
         timeLeft--;
+        timeElapsed++;
         timerSpan.innerHTML = timeLeft;
         if (timeLeft < 1) {
             // end the quiz if you run out of time. 
@@ -68,34 +69,35 @@ function checkAnswer(page, nextPage) {
     // so i worked around this by adding an event handler within the function
     // so that the event remains intact
     page.addEventListener("click", function (event) {
-        current = event.target.parentElement.parentElement.getAttribute("id");
+        current = event.target.parentElement.parentElement.parentElement.getAttribute("id");
         console.log(current);
         // Then I check to make sure the user chose one of the available answers
 
         if (event.target.matches("button")) {
             // check the ID of the answer they chose, which I have already set to either 'correct' or 'wrong'
             answer = event.target.getAttribute("id");
+            click = event.target;
             console.log(answer);
 
             if (answer === "correct") {
-                score += 7;
+                score += 20;
                 console.log(score);
-                show(correctNotif);
+                show(click.nextElementSibling);
                 disable(allButtons);
                 setTimeout(() => {
                     hide(page)
-                    hide(correctNotif)
+                    hide(click.nextElementSibling)
                     show(nextPage);
                     enable(allButtons);
                 }, 1000);
             }
             else if (answer === "wrong") {
-                timeLeft -= 7
-                show(wrongNotif);
+                timeLeft -= 10
+                show(click.nextElementSibling);
                 disable(allButtons);
                 setTimeout(() => {
                     hide(page)
-                    hide(wrongNotif);
+                    hide(click.nextElementSibling);
                     show(nextPage);
                     enable(allButtons);
                 }, 1000);
@@ -117,7 +119,7 @@ function endQuiz() {
     hide(allQuestionsDiv);
     show(viewHighScoreBtn);
     show(finalScore);
-    finalScoreSpan.innerHTML = score + timeLeft // + timeLeft gives the user a bonus the faster they can complete the quiz!;
+    finalScoreSpan.innerHTML = score - timeElapsed; // + timeLeft gives the user a bonus the faster they can complete the quiz!;
     return;
 };
 
