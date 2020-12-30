@@ -14,28 +14,28 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="px-5 py-3">
+<body class="px-5 py-3 bg-dark">
 
 
     <div class="mb-5 justify-content-between">
-        <button id="view-high-scores" class="btn btn-outline-info">View High-scores</button>
+        <button id="view-high-scores" class="btn btn-outline-light">View High-scores</button>
         <div id="timer" class="hide">Time left: <span id="timer-span"></span> seconds</div>
     </div>
 
 
-    <div id="start-page" class="p-auto m-auto text-center" style="width: fit-content;">
-        <div class="m-auto">
-            <h1 class="display-2">API Coding Quiz</h1>
-        </div>
-        <div class="row m-auto">
-            <h4>Test your knowledge with this short quiz on APIs and coding practices!</h4>
-        </div>
-        <button id="start-quiz-btn" class="btn-lg btn-primary">Start Quiz</button>
+    <div id="start-page" class="p-auto m-auto card text-center" style="width: 60em;">
+
+            <h1 class="display-2 card header">API Coding Quiz</h1>
+
+
+            <h4 class="card-body">Test your knowledge with this short quiz on APIs and coding practices!</h4>
+
+        <button id="start-quiz-btn" class="btn-lg btn-outline-success">Start Quiz</button>
     </div>
 
 
-    <div id="all-questions">
-        <div id="first-Q" class="p-auto m-auto card hide" style="width: 500px;">
+    <div id="all-questions" class="hide">
+        <div id="first-Q" class="question p-auto m-auto card hide">
             <h2 class="card-header">1: Web API supports which of the following protocol?</h2>
             <div class="card-body">
                 <button id="wrong" class="row m-1 btn-primary">TCP</button>
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div id="second-Q" class="p-auto m-auto card hide" style="width: 500px;">
+        <div id="second-Q" class="question p-auto m-auto card hide">
             <h2 class="card-header">2: Which of the following .NET frameworks support Web API?</h2>
             <div class="card-body">
                 <button id="wrong" class="row m-1 btn-primary">.NET 2.0</button>
@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <div id="third-Q" class="p-auto m-auto card hide" style="width: 500px;">
+        <div id="third-Q" class="question p-auto m-auto card hide">
             <h2 class="card-header">3: Which of the following statements is TRUE?</h2>
             <div class="card-body">
                 <button id="wrong" class="row m-1 btn-primary">Web API can be configured using web.config</button>
@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <div id="fourth-Q" class="p-auto m-auto card hide" style="width: 500px;">
+        <div id="fourth-Q" class="question p-auto m-auto card hide">
             <h2 class="card-header">4: Which of the following types of routing is supported in Web API 2?</h2>
             <div class="card-body">
                 <button id="wrong" class="row m-1 btn-primary">Attribute routing</button>
@@ -75,7 +75,7 @@
             </div>
         </div>
 
-        <div id="fifth-Q" class="p-auto m-auto card hide" style="width: 500px;">
+        <div id="fifth-Q" class="question p-auto m-auto card hide">
             <h2 class="card-header">5: Web API sends which of the following status code on successful execution?</h2>
             <div class="card-body">
                 <button id="correct" class="row m-1 btn-primary">200</button>
@@ -99,7 +99,8 @@
         Save your high score?
         <form>
             <input id="user-chosen-name" placeholder="Your name" type="text">
-            <button id="save-score-btn" class="btn btn-success">Save</button>
+            <button id="save-score-btn" class="btn-lg btn-success">Save</button>
+            <button id="go-back" class="btn-lg btn-warning">Go back</button>
         </form>
     </div>
 
