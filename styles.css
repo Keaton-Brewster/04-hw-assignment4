@@ -1,0 +1,35 @@
+.hide {
+    display: none;
+}
+
+button {
+    border-radius: 5px;
+    border-style: none;
+    padding: 5px 15px;
+}
+button:focus {
+    outline: none;
+}
+
+#wrong-notif {
+    padding: 10px 20px;
+    border-style: none;
+    border-radius: 5px;
+    background-color: #b51e2bd5;
+}
+#correct-notif {
+    padding: 10px 20px;
+    border-style: none;
+    border-radius: 5px;
+    background-color: #34ac0cc2;
+}
+#user-chosen-name {
+    background-color: rgb(216, 216, 216);
+    border: 1px;
+    border-radius: 10px;
+    padding: 10px;
+}
+#user-chosen-name:focus {
+    outline: none;
+    background-color: rgb(192, 192, 192);
+}
