@@ -10,17 +10,15 @@ button {
 button:focus {
     outline: none;
 }
-
-#wrong-notif {
-    padding: 10px 20px;
+.notif {
+    padding: 30px 70px;
     border-style: none;
     border-radius: 5px;
+}
+#wrong-notif {
     background-color: #b51e2bd5;
 }
 #correct-notif {
-    padding: 10px 20px;
-    border-style: none;
-    border-radius: 5px;
     background-color: #34ac0cc2;
 }
 #user-chosen-name {

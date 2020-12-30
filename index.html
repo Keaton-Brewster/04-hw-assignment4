@@ -34,53 +34,62 @@
     </div>
 
 
-    <div id="correct-notif" class="p-auto m-auto hide" style="width: fit-content;">
-        <h3>Correct!</h3>
-    </div>
-    <div id="wrong-notif" class="p-auto m-auto hide" style="width: fit-content;">
-        <h3>Wrong!</h3>
-    </div>
-
-
     <div id="all-questions">
-        <div id="first-Q" class="p-auto m-auto hide" style="width: 500px;">
-            <h2>1: Web API supports which of the following protocol?</h2>
-            <button id="wrong" class="row m-1 btn-primary">TCP</button>
-            <button id="correct" class="row m-1 btn-primary">HTTP</button>
-            <button id="wrong" class="row m-1 btn-primary">Soap</button>
-            <button id="wrong" class="row m-1 btn-primary">All of the above</button>
+        <div id="first-Q" class="p-auto m-auto card hide" style="width: 500px;">
+            <h2 class="card-header">1: Web API supports which of the following protocol?</h2>
+            <div class="card-body">
+                <button id="wrong" class="row m-1 btn-primary">TCP</button>
+                <button id="correct" class="row m-1 btn-primary">HTTP</button>
+                <button id="wrong" class="row m-1 btn-primary">Soap</button>
+                <button id="wrong" class="row m-1 btn-primary">All of the above</button>
+            </div>
         </div>
 
-        <div id="second-Q" class="p-auto m-auto hide" style="width: 500px;">
-            <h2>2: Which of the following .NET frameworks support Web API?</h2>
-            <button id="wrong" class="row m-1 btn-primary">.NET 2.0</button>
-            <button id="wrong" class="row m-1 btn-primary">.NET 3.0</button>
-            <button id="wrong" class="row m-1 btn-primary">.NET 3.5</button>
-            <button id="correct" class="row m-1 btn-primary">.NET 4.0</button>
+        <div id="second-Q" class="p-auto m-auto card hide" style="width: 500px;">
+            <h2 class="card-header">2: Which of the following .NET frameworks support Web API?</h2>
+            <div class="card-body">
+                <button id="wrong" class="row m-1 btn-primary">.NET 2.0</button>
+                <button id="wrong" class="row m-1 btn-primary">.NET 3.0</button>
+                <button id="wrong" class="row m-1 btn-primary">.NET 3.5</button>
+                <button id="correct" class="row m-1 btn-primary">.NET 4.0</button>
+            </div>
         </div>
 
-        <div id="third-Q" class="p-auto m-auto hide" style="width: 500px;">
-            <h2>3: Which of the following statements is TRUE?</h2>
-            <button id="wrong" class="row m-1 btn-primary">Web API can be configured using web.config</button>
-            <button id="correct" class="row m-1 btn-primary">Web API can only be configured by code</button>
-            <button id="wrong" class="row m-1 btn-primary">Web API can be configured using app.config</button>
-            <button id="wrong" class="row m-1 btn-primary">None of the above</button>
+        <div id="third-Q" class="p-auto m-auto card hide" style="width: 500px;">
+            <h2 class="card-header">3: Which of the following statements is TRUE?</h2>
+            <div class="card-body">
+                <button id="wrong" class="row m-1 btn-primary">Web API can be configured using web.config</button>
+                <button id="correct" class="row m-1 btn-primary">Web API can only be configured by code</button>
+                <button id="wrong" class="row m-1 btn-primary">Web API can be configured using app.config</button>
+                <button id="wrong" class="row m-1 btn-primary">None of the above</button>
+            </div>
         </div>
 
-        <div id="fourth-Q" class="p-auto m-auto hide" style="width: 500px;">
-            <h2>4: Which of the following types of routing is supported in Web API 2?</h2>
-            <button id="wrong" class="row m-1 btn-primary">Attribute routing</button>
-            <button id="wrong" class="row m-1 btn-primary">Convention-based routing</button>
-            <button id="correct" class="row m-1 btn-primary">Both</button>
-            <button id="wrong" class="row m-1 btn-primary">Neither</button>
+        <div id="fourth-Q" class="p-auto m-auto card hide" style="width: 500px;">
+            <h2 class="card-header">4: Which of the following types of routing is supported in Web API 2?</h2>
+            <div class="card-body">
+                <button id="wrong" class="row m-1 btn-primary">Attribute routing</button>
+                <button id="wrong" class="row m-1 btn-primary">Convention-based routing</button>
+                <button id="correct" class="row m-1 btn-primary">Both</button>
+                <button id="wrong" class="row m-1 btn-primary">Neither</button>
+            </div>
         </div>
 
-        <div id="fifth-Q" class="p-auto m-auto hide" style="width: 500px;">
-            <h2>5: Web API sends which of the following status code on successful execution?</h2>
-            <button id="correct" class="row m-1 btn-primary">200</button>
-            <button id="wrong" class="row m-1 btn-primary">201</button>
-            <button id="wrong" class="row m-1 btn-primary">500</button>
-            <button id="wrong" class="row m-1 btn-primary">404</button>
+        <div id="fifth-Q" class="p-auto m-auto card hide" style="width: 500px;">
+            <h2 class="card-header">5: Web API sends which of the following status code on successful execution?</h2>
+            <div class="card-body">
+                <button id="correct" class="row m-1 btn-primary">200</button>
+                <button id="wrong" class="row m-1 btn-primary">201</button>
+                <button id="wrong" class="row m-1 btn-primary">500</button>
+                <button id="wrong" class="row m-1 btn-primary">404</button>
+            </div>
+        </div>
+        
+        <div id="correct-notif" class="p-auto m-auto notif hide" style="width: fit-content;">
+            <h3>Correct!</h3>
+        </div>
+        <div id="wrong-notif" class="p-auto m-auto notif hide" style="width: fit-content;">
+            <h3>Wrong!</h3>
         </div>
     </div>
 

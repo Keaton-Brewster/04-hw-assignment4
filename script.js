@@ -50,6 +50,7 @@ function startQuiz() {
 
 function viewHighScores() {
     show(highscoresDiv);
+    hide(viewHighScoreBtn);
     hide(startPage);
     hide(finalScore);
 }
@@ -71,18 +72,18 @@ function checkAnswer(page, nextPage) {
             if (answer === "correct") {
                 score += 7;
                 console.log(score);
-                hide(page);
                 show(correctNotif);
                 setTimeout(() => {
+                    hide(page)
                     hide(correctNotif)
                     show(nextPage);
                 }, 1000);
             }
             else if (answer === "wrong") {
                 timeLeft -= 7
-                hide(page);
                 show(wrongNotif);
                 setTimeout(() => {
+                    hide(page)
                     hide(wrongNotif);
                     show(nextPage);
                 }, 1000);
@@ -135,6 +136,7 @@ function goBack(event) {
         hide(afterSaveScreen);
         hide(highscoresDiv);
         show(startPage);
+        show(viewHighScoreBtn);
     };
 };
 
