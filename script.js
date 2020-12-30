@@ -1,8 +1,7 @@
-var viewHighScoreBtn = document.querySelector("#view-high-scores"),
-    timerDiv = document.querySelector("#timer"),
+// divs and stuff
+var timerDiv = document.querySelector("#timer"),
     timerSpan = document.querySelector("#timer-span"),
     startPage = document.querySelector("#start-page"),
-    startQuizBtn = document.querySelector("#start-quiz-btn"),
     firstQ_Page = document.querySelector("#first-Q"),
     secondQ_Page = document.querySelector("#second-Q"),
     thirdQ_Page = document.querySelector("#third-Q"),
@@ -10,19 +9,26 @@ var viewHighScoreBtn = document.querySelector("#view-high-scores"),
     fifthQ_Page = document.querySelector("#fifth-Q"),
     finalScore = document.querySelector("#final-score"),
     finalScoreSpan = document.querySelector("#final-score-span"),
-    userChosenName = document.querySelector("#user-chosen-name"),
-    saveScoreBtn = document.querySelector("#save-score-btn"),
-    highscores = document.querySelector("#high-scores"),
+    highscoresDiv = document.querySelector("#high-scores"),
+    highscoresList = document.querySelector("#list-of-scores"),
     afterSaveScreen = document.querySelector("#after-save"),
-    goBackBtn = document.querySelector("#go-back"),
     correctNotif = document.querySelector("#correct-notif"),
     wrongNotif = document.querySelector("#wrong-notif"),
+
+    // buttons and inputs
+    startQuizBtn = document.querySelector("#start-quiz-btn"),
+    viewHighScoreBtn = document.querySelector("#view-high-scores"),
+    saveScoreBtn = document.querySelector("#save-score-btn"),
+    userChosenName = document.querySelector("#user-chosen-name"),
+    goBackBtn = document.querySelectorAll("#go-back"),
 
     score = 0,
     timeLeft = 60,
 
     savedHighScoresArr = [];
 
+// initializing function
+init();
 
 function startQuiz() {
     clearInterval(timer);
@@ -30,9 +36,10 @@ function startQuiz() {
     timeLeft = 60;
     timerSpan.innerHTML = timeLeft;
 
-    timerDiv.classList.remove("hide");
-    startPage.classList.add("hide");
-    firstQ_Page.classList.remove("hide");
+    show(timerDiv);
+    show(firstQ_Page);
+    hide(startPage);
+    hide(viewHighScoreBtn);
 
     timer = setInterval(() => {
         timeLeft--;
@@ -40,8 +47,11 @@ function startQuiz() {
     }, 1000);
 };
 
-init();
-
+function viewHighScores() {
+    show(highscoresDiv);
+    hide(startPage);
+    hide(finalScore);
+}
 // This is the function that gets run when you choose an answer in the quiz.
 function checkAnswer(page, nextPage) {
     // I couldn't figure out how to add an event through external arguments
@@ -60,36 +70,32 @@ function checkAnswer(page, nextPage) {
             if (answer === "correct") {
                 score += 7;
                 console.log(score);
-                page.classList.add("hide");
-                correctNotif.classList.remove("hide");
+                hide(page);
+                show(correctNotif);
                 setTimeout(() => {
-                    correctNotif.classList.add("hide");
-                    nextPage.classList.remove("hide");
+                    hide(correctNotif)
+                    show(nextPage);
                 }, 1000);
             }
-
             else if (answer === "wrong") {
                 timeLeft -= 7
-                page.classList.add("hide");
-                wrongNotif.classList.remove("hide");
+                hide(page);
+                show(wrongNotif);
                 setTimeout(() => {
-                    wrongNotif.classList.add("hide");
-                    nextPage.classList.remove("hide");
+                    hide(wrongNotif);
+                    show(nextPage);
                 }, 1000);
             };
             // check to see if the last question has been answered, and if so end the test and give results
             if (current === "fifth-Q") {
                 clearInterval(timer);
-                timerDiv.classList.add("hide");
-                getResults();
+                hide(timerDiv);
+                show(viewHighScoreBtn);
+                finalScoreSpan.innerHTML = score + timeLeft // + timeLeft gives the user a bonus the faster they can complete the quiz!;
                 return;
             };
         };
     });
-};
-
-function getResults() {
-    finalScoreSpan.innerHTML = score + timeLeft // + timeLeft gives the user a bonus the faster they can complete the quiz!;
 };
 
 function saveScore(event) {
@@ -98,7 +104,7 @@ function saveScore(event) {
 
     } else {
         var thisName = userChosenName.value.trim('');
-        thisScore = score;
+        thisScore = score + timeLeft;
 
         var thisToSave = {
             name: thisName,
@@ -107,8 +113,8 @@ function saveScore(event) {
 
         savedHighScoresArr.push(thisToSave);
         storeScores();
-        finalScore.classList.add("hide");
-        afterSaveScreen.classList.remove("hide");
+        hide(finalScore);
+        show(afterSaveScreen);
     }
 };
 
@@ -117,13 +123,24 @@ function storeScores() {
     userChosenName.innerHTML = '';
 };
 
-function goBack() {
-    document.childNodes.classList.add("hide");
-    startPage.classList.remove("hide");
-}
+function goBack(event) {
+    event.preventDefault();
+    var click = event.target;
+
+    if (click.matches("#go-back")) {
+        hide(afterSaveScreen);
+        hide(highscoresDiv);
+        show(startPage);
+    };
+};
 
 function renderScores() {
+    for (let i = 0; i < savedHighScoresArr; i++) {
+        var scoreToList = document.createElement("li");
+        scoreToList.textContent = savedHighScoresArr[i];
 
+        highscoresList.appendChild(scoreToList);
+    }
 }
 
 function init() {
@@ -134,10 +151,18 @@ function init() {
     } else {
         savedHighScoresArr = localScores;
     };
+    console.log(savedHighScoresArr);
     renderScores();
 };
 
-// viewHighScoreBtn.addEventListener("click", function);
+function hide(ele) {
+    ele.classList.add("hide");
+}
+function show(ele) {
+    ele.classList.remove("hide");
+}
+
+
 startQuizBtn.addEventListener("click", startQuiz); // start quiz button
 
 // handlers for the answers in the quiz
@@ -151,6 +176,9 @@ fifthQ_Page.addEventListener("click", checkAnswer(fifthQ_Page, finalScore))
 saveScoreBtn.addEventListener("click", saveScore);
 
 // handler for 'go back' button
-goBackBtn.addEventListener("click", goBack);
+document.addEventListener("click", goBack);
+
+// handler for view high scores
+viewHighScoreBtn.addEventListener("click", viewHighScores);
 
 

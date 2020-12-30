@@ -15,9 +15,9 @@
 </head>
 
 <body class="px-5 py-3">
-    <div class="mb-5 row justify-content-between">
+    <div class="mb-5 justify-content-between">
         <button id="view-high-scores" class="btn btn-outline-info">View High-scores</button>
-        <div id="timer" class="col-6 text-right hide">Time left: <span id="timer-span"></span> seconds</div>
+        <div id="timer" class="hide">Time left: <span id="timer-span"></span> seconds</div>
     </div>
 
     <div id="start-page" class="p-auto m-auto text-center" style="width: fit-content;">
@@ -92,11 +92,14 @@
 
     <div id="after-save" class="text-center hide">
         <p class="display-5">Success!</p>
-        <button id="go-back">Go back</button>
+        <button id="go-back" class="btn btn-lg btn-outline-primary">Go back</button>
     </div>
 
 
-    <div id="high-scores" class="p-auto m-auto hide" style="width: fit-content;"></div>
+    <div id="high-scores" class="p-auto m-auto hide" style="width: fit-content;">
+        <ul id="list-of-scores"></ul>
+        <button id="go-back" class="btn btn-lg btn-outline-primary">Go back</button>
+    </div>
 
     <!-- bootstrap script plugins -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
