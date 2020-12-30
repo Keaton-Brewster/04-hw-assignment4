@@ -118,6 +118,7 @@ function saveScore(event) {
     }
 };
 
+
 function storeScores() {
     localStorage.setItem("saved-scores", JSON.stringify(savedHighScoresArr));
     userChosenName.innerHTML = '';
