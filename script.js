@@ -7,6 +7,7 @@ var timerDiv = document.querySelector("#timer"),
     thirdQ_Page = document.querySelector("#third-Q"),
     fourthQ_Page = document.querySelector("#fourth-Q"),
     fifthQ_Page = document.querySelector("#fifth-Q"),
+    allQuestionsDiv = document.querySelector("#all-questions"),
     finalScore = document.querySelector("#final-score"),
     finalScoreSpan = document.querySelector("#final-score-span"),
     highscoresDiv = document.querySelector("#high-scores"),
@@ -37,6 +38,7 @@ function startQuiz() {
     timeLeft = 60;
     timerSpan.innerHTML = timeLeft;
 
+    show(allQuestionsDiv);
     show(timerDiv);
     show(firstQ_Page);
     hide(startPage);
@@ -45,6 +47,9 @@ function startQuiz() {
     timer = setInterval(() => {
         timeLeft--;
         timerSpan.innerHTML = timeLeft;
+        if (timeLeft < 1) {
+            endQuiz();
+        }
     }, 1000);
 };
 
@@ -60,7 +65,7 @@ function checkAnswer(page, nextPage) {
     // so i worked around this by adding an event handler within the function
     // so that the event remains intact
     page.addEventListener("click", function (event) {
-        current = event.target.parentElement.getAttribute("id");
+        current = event.target.parentElement.parentElement.getAttribute("id");
         console.log(current);
         // Then I check to make sure the user chose one of the available answers
 
@@ -90,14 +95,22 @@ function checkAnswer(page, nextPage) {
             };
             // check to see if the last question has been answered, and if so end the test and give results
             if (current === "fifth-Q") {
-                clearInterval(timer);
-                hide(timerDiv);
-                show(viewHighScoreBtn);
-                finalScoreSpan.innerHTML = score + timeLeft // + timeLeft gives the user a bonus the faster they can complete the quiz!;
-                return;
+                setTimeout(() => {
+                    endQuiz();
+                }, 1000);
             };
         };
     });
+};
+
+function endQuiz() {
+    clearInterval(timer);
+    hide(timerDiv);
+    hide(allQuestionsDiv);
+    show(viewHighScoreBtn);
+    show(finalScore);
+    finalScoreSpan.innerHTML = score + timeLeft // + timeLeft gives the user a bonus the faster they can complete the quiz!;
+    return;
 };
 
 function saveScore(event) {
@@ -134,6 +147,7 @@ function goBack(event) {
 
     if (click.matches("#go-back")) {
         hide(afterSaveScreen);
+        hide(finalScore);
         hide(highscoresDiv);
         show(startPage);
         show(viewHighScoreBtn);
