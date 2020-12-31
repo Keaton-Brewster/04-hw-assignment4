@@ -75,7 +75,7 @@ function checkAnswer(page, nextPage) {
     // so i worked around this by adding an event handler within the function
     // so that the event remains intact
     page.addEventListener("click", function (event) {
-        current = event.target.parentElement.parentElement.parentElement.getAttribute("id");
+        currentQuestion = event.target.parentElement.parentElement.parentElement.getAttribute("id");
         // Then I check to make sure the user chose one of the available answers
 
         if (event.target.matches("button")) {
@@ -107,7 +107,7 @@ function checkAnswer(page, nextPage) {
                 }, 1000);
             };
             // check to see if the last question has been answered, and if so end the test and give results
-            if (current === "tenth-Q") {
+            if (currentQuestion === "tenth-Q") {
                 setTimeout(() => {
                     endQuiz();
                 }, 1000);
