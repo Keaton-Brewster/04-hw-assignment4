@@ -44,6 +44,9 @@ Images:
 
 ![SS2](https://user-images.githubusercontent.com/65474893/103395224-d7eb5f80-4af2-11eb-8f91-b57b1f62fba8.png)
 
+![Screen Shot 2020-12-30 at 11 02 12 PM](https://user-images.githubusercontent.com/65474893/103395267-13862980-4af3-11eb-80cf-e608a2009927.png)
+
+
 
 
 View working version: https://keaton-brewster.github.io/JS-based-Quiz/
