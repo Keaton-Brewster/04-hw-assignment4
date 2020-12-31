@@ -81,26 +81,27 @@ function checkAnswer(page, nextPage) {
         if (event.target.matches("button")) {
             // check the ID of the answer they chose, which I have already set to either 'correct' or 'wrong'
             answer = event.target.getAttribute("id");
-            click = event.target;
+            notification = event.target.nextElementSibling;
 
             if (answer === "correct") {
                 score += 20;
-                show(click.nextElementSibling);
+                show(notification);
                 disable(allButtons);
                 setTimeout(() => {
-                    hide(page)
-                    hide(click.nextElementSibling)
+                    hide(page);
+                    hide(notification);
                     show(nextPage);
                     enable(allButtons);
                 }, 1000);
             }
             else if (answer === "wrong") {
-                timeLeft -= 10
-                show(click.nextElementSibling);
+                timeLeft -= 10;
+                timeElapsed += 10;
+                show(notification);
                 disable(allButtons);
                 setTimeout(() => {
-                    hide(page)
-                    hide(click.nextElementSibling);
+                    hide(page);
+                    hide(notification);
                     show(nextPage);
                     enable(allButtons);
                 }, 1000);
