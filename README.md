@@ -38,4 +38,10 @@ functionality and goal of the assignment
 
 > I made the subject matter related to Smash Bros by Nintendo
 
+Images:
+
+![Alt text](/images/SS1.jpg?raw=true "Optional Title")
+![Alt text](/images/SS2.jpg?raw=true "Optional Title")
+
+
 View working version: https://keaton-brewster.github.io/JS-based-Quiz/
