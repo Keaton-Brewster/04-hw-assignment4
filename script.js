@@ -12,7 +12,9 @@ var timerDiv = document.querySelector("#timer"),
     eighthQ_Page = document.querySelector("#eighth-Q"),
     ninthQ_Page = document.querySelector("#ninth-Q"),
     tenthQ_Page = document.querySelector("#tenth-Q"),
-    allQuestionsDiv = document.querySelector("#all-questions"),
+    eachQ_Arr = [firstQ_Page, secondQ_Page, thirdQ_Page,
+        fourthQ_Page, fifthQ_Page, sixthQ_Page, seventhQ_Page,
+        eighthQ_Page, ninthQ_Page, tenthQ_Page],
     finalScore = document.querySelector("#final-score"),
     finalScoreSpan = document.querySelector("#final-score-span"),
     highscoresDiv = document.querySelector("#high-scores"),
@@ -51,7 +53,6 @@ function startQuiz() {
     // clear the text input from the last time you may have saved a score
     userChosenName.innerHTML = '';
 
-    show(allQuestionsDiv);
     show(timerDiv);
     show(firstQ_Page);
     hide(startPage);
@@ -120,11 +121,10 @@ function checkAnswer(page, nextPage) {
 function endQuiz() {
     clearInterval(timer);
     hide(timerDiv);
-    hide(allQuestionsDiv);
+    hideAll(eachQ_Arr)
     show(viewHighScoreBtn);
     show(finalScore);
     finalScoreSpan.innerHTML = score - timeElapsed; // + timeLeft gives the user a bonus the faster they can complete the quiz!;
-    return;
 };
 
 // this function here shows the high scores screen. 
@@ -163,6 +163,9 @@ function goBack(event) {
     var click = event.target;
 
     if (click.matches("#go-back")) {
+        clearInterval(timer);    
+        hideAll(eachQ_Arr)
+        hide(timerDiv);
         hide(finalScore);
         hide(highscoresDiv);
         show(startPage);
@@ -234,8 +237,20 @@ function storeScores() {
 function hide(ele) {
     ele.classList.add("hide");
 };
+// this one will loop through an array and apply hide to all of them. 
+function hideAll(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        hide(arr[i]);
+    };
+};
 function show(ele) {
     ele.classList.remove("hide");
+};
+// same as hideAll, but SHOW instead (obviously lol)
+function showAll(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        show(arr[i]);
+    };
 };
 
 // functions to enable and disable buttons for the answerCheck()
@@ -268,7 +283,7 @@ tenthQ_Page.addEventListener("click", checkAnswer(tenthQ_Page, finalScore));
 // handler for save score button
 saveScoreBtn.addEventListener("click", saveScore);
 
-// handler for 'go back' button
+// handler for 'go back' button, applied to the whole document, since the button will appear in many different places at different times. 
 document.addEventListener("click", goBack);
 
 // handler for view high scores
