@@ -30,6 +30,9 @@ button:focus {
 #timer {
     color: white;
 }
+#start-page {
+    width: 60em;
+}
 #user-chosen-name {
     background-color: rgb(216, 216, 216);
     border: 1px;
