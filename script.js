@@ -80,6 +80,7 @@ function checkAnswer(page, nextPage) {
         if (event.target.matches("button")) {
             // check the ID of the answer they chose, which I have already set to either 'correct' or 'wrong'
             answer = event.target.getAttribute("id");
+            // assign the correct/wrong notification to a variable so we can easily show and hide it
             notification = event.target.nextElementSibling;
 
             if (answer === "correct") {
@@ -122,7 +123,11 @@ function endQuiz() {
     hideAll(eachQ_Arr)
     show(viewHighScoreBtn);
     show(finalScore);
-    finalScoreSpan.innerHTML = score - timeElapsed; // + timeLeft gives the user a bonus the faster they can complete the quiz!;
+    if (score < 1) {
+        finalScoreSpan.innerHTML = 0;
+    } else {
+        finalScoreSpan.innerHTML = score - timeElapsed; // + timeLeft gives the user a bonus the faster they can complete the quiz!;
+    }
 };
 
 // this function here shows the high scores screen. 
