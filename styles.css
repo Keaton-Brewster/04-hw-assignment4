@@ -43,6 +43,9 @@ button:focus {
     outline: none;
     background-color: rgb(192, 192, 192);
 }
+#high-scores {
+    padding: 10px !important;
+}
 
 /* hide must be loaded last so that it always takes priority */
 .hide {
