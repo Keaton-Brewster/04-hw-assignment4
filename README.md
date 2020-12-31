@@ -40,8 +40,10 @@ functionality and goal of the assignment
 
 Images:
 
-![Alt text](images/SS1.jpg?raw=true "Optional Title")
-![Alt text](images/SS2.jpg?raw=true "Optional Title")
+![SS1](https://user-images.githubusercontent.com/65474893/103395240-e20d5e00-4af2-11eb-9dab-7f1cc17ee41d.png)
+
+![SS2](https://user-images.githubusercontent.com/65474893/103395224-d7eb5f80-4af2-11eb-8f91-b57b1f62fba8.png)
+
 
 
 View working version: https://keaton-brewster.github.io/JS-based-Quiz/
