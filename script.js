@@ -72,9 +72,7 @@ function startQuiz() {
 
 // This is the function that gets run when you choose an answer in the quiz.
 function checkAnswer(page, nextPage) {
-    // I couldn't figure out how to add an event through external arguments
-    // so i worked around this by adding an event handler within the function
-    // so that the event remains intact
+    // register the click on the button as an event by adding this listener, so that we can use the event for variables.
     page.addEventListener("click", function (event) {
         currentQuestion = event.target.parentElement.parentElement.parentElement.getAttribute("id");
         // Then I check to make sure the user chose one of the available answers
@@ -163,7 +161,7 @@ function goBack(event) {
     var click = event.target;
 
     if (click.matches("#go-back")) {
-        clearInterval(timer);    
+        clearInterval(timer);
         hideAll(eachQ_Arr)
         hide(timerDiv);
         hide(finalScore);
