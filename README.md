@@ -28,13 +28,14 @@ I have included the user story and acceptance criteria, as provided to me.
 > WHEN the game is over  
 > THEN I can save my initials and score  
 
+
 I will note that I did chose to make a couple of changes to my design that do not _exactly_ match the acceptance criteria. 
 However I feel that the difference is minor and does not impact the functionality and goal of the assignment
-```
-I made the subject matter related to Super Smash Bros by Nintendo
-The assignment does call for a code quiz, but I just found this subject matter more entertaining
-Functionally, the app works as requested. 
-```
+
+* I made the subject matter related to Super Smash Bros by Nintendo  
+* The assignment does call for a code quiz, but I just found this subject matter more entertaining  
+* Functionally, the app works as requested.   
+
 Images:
 
 ![SS1](https://user-images.githubusercontent.com/65474893/103395240-e20d5e00-4af2-11eb-9dab-7f1cc17ee41d.png)
