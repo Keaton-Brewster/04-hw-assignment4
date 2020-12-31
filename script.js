@@ -35,8 +35,10 @@ var timerDiv = document.querySelector("#timer"),
 
 savedScoresArr = [];
 
+
 // initializing function
 init();
+
 
 // function that runs when you click "start quiz"
 function startQuiz() {
@@ -69,6 +71,7 @@ function startQuiz() {
         }
     }, 1000);
 };
+
 
 // This is the function that gets run when you choose an answer in the quiz.
 function checkAnswer(page, nextPage) {
@@ -115,6 +118,7 @@ function checkAnswer(page, nextPage) {
     });
 };
 
+
 // function to end the quiz, either when you finish answering all the questions, or if the time runs out
 function endQuiz() {
     clearInterval(timer);
@@ -129,6 +133,7 @@ function endQuiz() {
     }
 };
 
+
 // this function here shows the high scores screen. 
 // does so by the use of add and removing classes that CSS is influencing, with the use of "display: none;"
 function viewHighScores() {
@@ -137,6 +142,7 @@ function viewHighScores() {
     hide(startPage);
     hide(finalScore);
 };
+
 
 function saveScore(event) {
     event.preventDefault();
@@ -161,6 +167,7 @@ function saveScore(event) {
     };
 };
 
+
 function goBack(event) {
     event.preventDefault();
     var click = event.target;
@@ -176,6 +183,7 @@ function goBack(event) {
     };
 };
 
+
 // this function clears the array AND the localStorage, then renders the list again. 
 function clearHighScores() {
     for (let i = 0; i < savedScoresArr.length;) {
@@ -184,6 +192,7 @@ function clearHighScores() {
     storeScores();
     renderScores();
 };
+
 
 function renderScores() {
     // display nothing in the highscores list, if there are no scores to display! (duh)
@@ -223,6 +232,7 @@ function renderScores() {
     };
 };
 
+
 function init() {
     localScores = JSON.parse(localStorage.getItem("saved-scores"));
 
@@ -238,6 +248,7 @@ function init() {
 function storeScores() {
     localStorage.setItem("saved-scores", JSON.stringify(savedScoresArr));
 };
+
 
 // main functions for showing and hiding divs and buttons and such, so that
 // it appears as though you are going through different webpages, but it is all still done inside one webpage. 
@@ -260,6 +271,7 @@ function showAll(arr) {
     };
 };
 
+
 // functions to enable and disable buttons for the answerCheck()
 // so that when you chose an answer, you cant also click a bunch of other answers before the next question comes up. 
 function enable(arr) {
@@ -272,6 +284,7 @@ function disable(arr) {
         allButtons[i].disabled = true
     };
 };
+
 
 startQuizBtn.addEventListener("click", startQuiz); // start quiz button
 
