@@ -8,6 +8,10 @@ var timerDiv = document.querySelector("#timer"),
     fourthQ_Page = document.querySelector("#fourth-Q"),
     fifthQ_Page = document.querySelector("#fifth-Q"),
     sixthQ_Page = document.querySelector("#sixth-Q"),
+    seventhQ_Page = document.querySelector("#seventh-Q"),
+    eighthQ_Page = document.querySelector("#eighth-Q"),
+    ninthQ_Page = document.querySelector("#ninth-Q"),
+    tenthQ_Page = document.querySelector("#tenth-Q"),
     allQuestionsDiv = document.querySelector("#all-questions"),
     finalScore = document.querySelector("#final-score"),
     finalScoreSpan = document.querySelector("#final-score-span"),
@@ -102,7 +106,7 @@ function checkAnswer(page, nextPage) {
                 }, 1000);
             };
             // check to see if the last question has been answered, and if so end the test and give results
-            if (current === "sixth-Q") {
+            if (current === "tenth-Q") {
                 setTimeout(() => {
                     endQuiz();
                 }, 1000);
@@ -252,7 +256,11 @@ secondQ_Page.addEventListener("click", checkAnswer(secondQ_Page, thirdQ_Page));
 thirdQ_Page.addEventListener("click", checkAnswer(thirdQ_Page, fourthQ_Page));
 fourthQ_Page.addEventListener("click", checkAnswer(fourthQ_Page, fifthQ_Page));
 fifthQ_Page.addEventListener("click", checkAnswer(fifthQ_Page, sixthQ_Page));
-sixthQ_Page.addEventListener("click", checkAnswer(sixthQ_Page, finalScore));
+sixthQ_Page.addEventListener("click", checkAnswer(sixthQ_Page, seventhQ_Page));
+seventhQ_Page.addEventListener("click", checkAnswer(seventhQ_Page, eighthQ_Page));
+eighthQ_Page.addEventListener("click", checkAnswer(eighthQ_Page, ninthQ_Page));
+ninthQ_Page.addEventListener("click", checkAnswer(ninthQ_Page, tenthQ_Page));
+tenthQ_Page.addEventListener("click", checkAnswer(tenthQ_Page, finalScore));
 
 // handler for save score button
 saveScoreBtn.addEventListener("click", saveScore);
