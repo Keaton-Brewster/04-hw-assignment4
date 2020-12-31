@@ -13,7 +13,6 @@ var timerDiv = document.querySelector("#timer"),
     finalScoreSpan = document.querySelector("#final-score-span"),
     highscoresDiv = document.querySelector("#high-scores"),
     highscoresList = document.querySelector("#list-of-scores"),
-    afterSaveScreen = document.querySelector("#after-save"),
 
     // buttons and inputs
     allButtons = document.querySelectorAll("button"),
@@ -150,7 +149,7 @@ function saveScore(event) {
         // Re render the list of scores stored in the local storage. 
         renderScores();
         hide(finalScore);
-        show(afterSaveScreen);
+        show(highscoresDiv);
     };
 };
 
@@ -159,7 +158,6 @@ function goBack(event) {
     var click = event.target;
 
     if (click.matches("#go-back")) {
-        hide(afterSaveScreen);
         hide(finalScore);
         hide(highscoresDiv);
         show(startPage);
@@ -179,7 +177,13 @@ function renderScores() {
     if (savedHighScoresArr.length < 1) {
         highscoresList.innerHTML = ''
     } else {
-        for (let i = 0; i < savedHighScoresArr.length; i++) {
+        // not super sure how this sorting thing works, but I found it online, and it allows me to sort the list by score, instead of just most recently added, so thats cool
+        // I will need to figure out exactly what it is doing at some point 
+        var sorted = savedHighScoresArr.slice(0);
+        sorted.sort(function(a,b) {
+            return b.score - a.score;
+        });
+        for (let i = 0; i < sorted.length; i++) {
             var tr = document.createElement("tr");
 
             var th = document.createElement("th");
@@ -187,12 +191,12 @@ function renderScores() {
             th.innerHTML = (i + 1);
 
             var nameforlist = document.createElement("td"),
-                name = savedHighScoresArr[i].name;
+                name = sorted[i].name;
             // wrote a little tid-bit here that will capitalize the first letter of your name, in case you forgot to when typing it in. 
             nameforlist.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
 
             var scoreforlist = document.createElement("td");
-            scoreforlist.innerHTML = savedHighScoresArr[i].score;
+            scoreforlist.innerHTML = sorted[i].score;
 
             tr.appendChild(th);
             tr.appendChild(nameforlist);
