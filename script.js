@@ -187,6 +187,7 @@ function renderScores() {
         sorted.sort(function(a,b) {
             return b.score - a.score;
         });
+        
         for (let i = 0; i < sorted.length; i++) {
             var tr = document.createElement("tr");
 
