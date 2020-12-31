@@ -44,6 +44,8 @@ function startQuiz() {
     score = 0;
     // timer starts at 60 'seconds'
     timerSpan.innerHTML = timeLeft;
+    // clear the text input from the last time you may have saved a score
+    userChosenName.innerHTML = '';
 
     show(allQuestionsDiv);
     show(timerDiv);
@@ -219,7 +221,6 @@ function init() {
 // here is the little function that stores the scores objects to the local storage with the use of JSON
 function storeScores() {
     localStorage.setItem("saved-scores", JSON.stringify(savedHighScoresArr));
-    userChosenName.innerHTML = '';
 };
 
 // main functions for showing and hiding divs and buttons and such, so that
