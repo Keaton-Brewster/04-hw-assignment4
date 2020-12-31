@@ -5,39 +5,36 @@ Quiz Code
 After learning about API, following a week on javascript, 
 I was given the assignment to make an interactive quiz that covers the topics
 of APIs
-I have included the user story and acceptance criteria, as provided to me, at the bottom of the README. 
+I have included the user story and acceptance criteria, as provided to me. 
 
 
 #### User Story
 
-```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
-
+> AS A coding boot camp student
+> I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
+> SO THAT I can gauge my progress compared to my peers
 
 #### Acceptance Criteria
 
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and score
-```
-Here I should note that I did chose to make a couple of changes in my code that 
-do not exactly match the acceptance criteria. However I feel that I changes I made are inconsequential to the
-functionality and goal of the assignment
+> GIVEN I am taking a code quiz
+> WHEN I click the start button
+> THEN a timer starts and I am presented with a question
+> WHEN I answer a question
+> THEN I am presented with another question
+> WHEN I answer a question incorrectly
+> THEN time is subtracted from the clock
+> WHEN all questions are answered or the timer reaches 0
+> THEN the game is over
+> WHEN the game is over
+> THEN I can save my initials and score
 
-> I made the subject matter related to Smash Bros by Nintendo
-
+I will note that I did chose to make a couple of changes to my design that do not _exactly_ match the acceptance criteria. 
+However I feel that the difference is minor and does not impact the functionality and goal of the assignment
+```
+I made the subject matter related to Super Smash Bros by Nintendo
+The assignment does call for a code quiz, but I just found this subject matter more entertaining
+Functionally, the app works as requested. 
+```
 Images:
 
 ![SS1](https://user-images.githubusercontent.com/65474893/103395240-e20d5e00-4af2-11eb-9dab-7f1cc17ee41d.png)
