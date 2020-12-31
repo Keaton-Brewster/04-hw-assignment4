@@ -96,7 +96,6 @@ function checkAnswer(page, nextPage) {
             }
             else if (answer === "wrong") {
                 timeLeft -= 10;
-                timeElapsed += 5;
                 show(notification);
                 disable(allButtons);
                 setTimeout(() => {
@@ -126,7 +125,7 @@ function endQuiz() {
     if (score < 1) {
         finalScoreSpan.innerHTML = 0;
     } else {
-        finalScoreSpan.innerHTML = score - timeElapsed; // + timeLeft gives the user a bonus the faster they can complete the quiz!;
+        finalScoreSpan.innerHTML = score + timeLeft; // + timeLeft gives the user a bonus the faster they can complete the quiz!;
     }
 };
 
@@ -145,10 +144,12 @@ function saveScore(event) {
         return;
     } else {
         var thisName = userChosenName.value.trim('');
-        thisScore = score - timeElapsed;
+        thisScore = score + timeLeft;
+        thisTime = timeElapsed;
         var thisToSave = {
             name: thisName,
-            score: thisScore
+            score: thisScore,
+            time: thisTime
         };
         savedScoresArr.push(thisToSave);
         storeScores();
@@ -210,10 +211,13 @@ function renderScores() {
             var scoreforlist = document.createElement("td");
             scoreforlist.innerHTML = savedScoresArr[i].score;
 
+            var timeforlist = document.createElement("td");
+            timeforlist.innerHTML = "0:" + savedScoresArr[i].time
+
             tr.appendChild(th);
             tr.appendChild(nameforlist);
             tr.appendChild(scoreforlist);
-            // here I can append a time taken thing
+            tr.appendChild(timeforlist);
             highscoresList.appendChild(tr);
         };
     };
