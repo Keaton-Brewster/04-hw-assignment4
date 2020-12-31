@@ -212,7 +212,7 @@ function renderScores() {
             scoreforlist.innerHTML = savedScoresArr[i].score;
 
             var timeforlist = document.createElement("td");
-            timeforlist.innerHTML = "0:" + savedScoresArr[i].time
+            timeforlist.innerHTML = "0:" + savedScoresArr[i].time 
 
             tr.appendChild(th);
             tr.appendChild(nameforlist);
