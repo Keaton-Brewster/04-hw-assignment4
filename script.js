@@ -73,18 +73,15 @@ function checkAnswer(page, nextPage) {
     // so that the event remains intact
     page.addEventListener("click", function (event) {
         current = event.target.parentElement.parentElement.parentElement.getAttribute("id");
-        console.log(current);
         // Then I check to make sure the user chose one of the available answers
 
         if (event.target.matches("button")) {
             // check the ID of the answer they chose, which I have already set to either 'correct' or 'wrong'
             answer = event.target.getAttribute("id");
             click = event.target;
-            console.log(answer);
 
             if (answer === "correct") {
                 score += 20;
-                console.log(score);
                 show(click.nextElementSibling);
                 disable(allButtons);
                 setTimeout(() => {
@@ -174,7 +171,6 @@ function clearHighScores() {
     for (let i = 0; i < savedHighScoresArr.length;) {
         savedHighScoresArr.pop();
     }
-    console.log(savedHighScoresArr);
     storeScores();
     renderScores();
 };
@@ -210,12 +206,10 @@ function init() {
     localScores = JSON.parse(localStorage.getItem("saved-scores"));
 
     if (!localScores) {
-        console.log("no scores");
         return;
     } else {
         savedHighScoresArr = localScores;
     };
-    console.log(savedHighScoresArr);
     renderScores();
 };
 
