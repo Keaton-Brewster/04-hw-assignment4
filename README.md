@@ -33,4 +33,4 @@ WHEN the game is over
 THEN I can save my initials and score
 ```
 
-View working version: https://keaton-brewster.github.io/API-Code-Quiz/
+View working version: https://keaton-brewster.github.io/JS-based-Quiz/
