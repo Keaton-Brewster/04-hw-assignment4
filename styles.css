@@ -61,6 +61,36 @@ button:focus {
     padding: 10px;
 }
 
+@media (max-width: 1025px) {
+    #start-page {
+        width: 40em;
+    }
+    .question {
+        width: 43em;
+    }
+}
+
+@media (max-width: 768px) {
+    #start-page {
+        width: fit-content;
+    }
+    #header {
+        font-size: 40pt;
+    }
+    .question {
+        width: fit-content;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-left: 0;
+        padding-right: 0;
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
 /* hide must load last to take priority over everything */
 .hide {
     display: none !important;
