@@ -84,7 +84,7 @@ function checkAnswer(page, nextPage) {
             notification = event.target.nextElementSibling;
 
             if (answer === "correct") {
-                score += 20;
+                score += 10;
                 show(notification);
                 disable(allButtons);
                 setTimeout(() => {
@@ -96,7 +96,7 @@ function checkAnswer(page, nextPage) {
             }
             else if (answer === "wrong") {
                 timeLeft -= 10;
-                timeElapsed += 10;
+                timeElapsed += 5;
                 show(notification);
                 disable(allButtons);
                 setTimeout(() => {
