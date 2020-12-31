@@ -156,8 +156,7 @@ function saveScore(event) {
         highscoresList.innerHTML = '';
         // Re render the list of scores stored in the local storage. 
         renderScores();
-        hide(finalScore);
-        show(highscoresDiv);
+        viewHighScores();
     };
 };
 
@@ -176,6 +175,7 @@ function goBack(event) {
     };
 };
 
+// this function clears the array AND the localStorage, then renders the list again. 
 function clearHighScores() {
     for (let i = 0; i < savedScoresArr.length;) {
         savedScoresArr.pop();
