@@ -1,3 +1,7 @@
+body {
+    padding: 15px 50px;
+}
+
 button {
     border-radius: 5px;
     border-style: none;
@@ -62,8 +66,11 @@ button:focus {
 }
 
 @media (max-width: 1025px) {
+    body {
+        padding: 15px 45px;
+    }
     #start-page {
-        width: 40em;
+        width: fit-content;
     }
     .question {
         width: 43em;
@@ -71,6 +78,9 @@ button:focus {
 }
 
 @media (max-width: 768px) {
+    body {
+        padding: 15px 40px;
+    }
     #start-page {
         width: fit-content;
     }
@@ -84,8 +94,10 @@ button:focus {
 
 @media (max-width: 480px) {
     body {
-        margin-right: 0;
-        margin-left: 0;
+        padding: 15px;
+    }
+    .card-header {
+        padding: 5px;
     }
 }
 
