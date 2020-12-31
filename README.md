@@ -36,6 +36,8 @@ However I feel that the difference is minor and does not impact the functionalit
 * The assignment does call for a code quiz, but I just found this subject matter more entertaining  
 * Functionally, the app works as requested.   
 
+View working version: https://keaton-brewster.github.io/JS-based-Quiz/
+
 Images:
 
 ![SS1](https://user-images.githubusercontent.com/65474893/103395240-e20d5e00-4af2-11eb-9dab-7f1cc17ee41d.png)
@@ -43,8 +45,3 @@ Images:
 ![SS2](https://user-images.githubusercontent.com/65474893/103395224-d7eb5f80-4af2-11eb-8f91-b57b1f62fba8.png)
 
 ![Screen Shot 2020-12-30 at 11 02 12 PM](https://user-images.githubusercontent.com/65474893/103395267-13862980-4af3-11eb-80cf-e608a2009927.png)
-
-
-
-
-View working version: https://keaton-brewster.github.io/JS-based-Quiz/
