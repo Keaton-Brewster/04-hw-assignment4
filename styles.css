@@ -3,61 +3,65 @@ button {
     border-style: none;
     padding: 5px 15px;
     margin: 10px 1px;
-};
+}
 
 button:focus {
     outline: none;
-};
+}
+
+.card-footer {
+    margin-bottom: 1px;
+}
 
 .question {
     width: 50em;
-};
+}
 
 .final-score {
     color: white;
-};
+}
 
 .il-block {
     display: inline-block;
-};
+}
 
 #start-page {
     width: 40em;
-};
+}
 
 .wrong {
     background-color: #b51e2b;
-};
+}
 
 .correct {
     background-color: #34ac0c;
-};
+}
 
 #timer {
     color: white;
-};
+}
 
 #start-page {
     width: 60em;
-};
+}
 
 #user-chosen-name {
     background-color: rgb(216, 216, 216);
     border: 1px;
     border-radius: 10px;
     padding: 10px;
-};
+}
 
 #user-chosen-name:focus {
     outline: none;
     background-color: rgb(192, 192, 192);
-};
+}
 
 #high-scores {
     padding: 10px;
-};
+}
 
-/* hide must be loaded last so that it always takes priority */
+/* hide must load last to take priority over everything */
 .hide {
-    display: none;
+    display: none !important;
 }
