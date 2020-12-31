@@ -144,6 +144,22 @@ function viewHighScores() {
 };
 
 
+function goBack(event) {
+    event.preventDefault();
+    var click = event.target;
+
+    if (click.matches("#go-back")) {
+        clearInterval(timer);
+        hideAll(eachQ_Arr)
+        hide(timerDiv);
+        hide(finalScore);
+        hide(highscoresDiv);
+        show(startPage);
+        show(viewHighScoreBtn);
+    };
+};
+
+
 function saveScore(event) {
     event.preventDefault();
     if (!userChosenName.value) {
@@ -164,22 +180,6 @@ function saveScore(event) {
         // Re render the list of scores stored in the local storage. 
         renderScores();
         viewHighScores();
-    };
-};
-
-
-function goBack(event) {
-    event.preventDefault();
-    var click = event.target;
-
-    if (click.matches("#go-back")) {
-        clearInterval(timer);
-        hideAll(eachQ_Arr)
-        hide(timerDiv);
-        hide(finalScore);
-        hide(highscoresDiv);
-        show(startPage);
-        show(viewHighScoreBtn);
     };
 };
 
@@ -233,6 +233,12 @@ function renderScores() {
 };
 
 
+// here is the little function that stores the scores objects to the local storage with the use of JSON
+function storeScores() {
+    localStorage.setItem("saved-scores", JSON.stringify(savedScoresArr));
+};
+
+
 function init() {
     localScores = JSON.parse(localStorage.getItem("saved-scores"));
 
@@ -242,11 +248,6 @@ function init() {
         savedScoresArr = localScores;
     };
     renderScores();
-};
-
-// here is the little function that stores the scores objects to the local storage with the use of JSON
-function storeScores() {
-    localStorage.setItem("saved-scores", JSON.stringify(savedScoresArr));
 };
 
 
