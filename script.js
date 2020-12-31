@@ -31,7 +31,7 @@ var timerDiv = document.querySelector("#timer"),
     timeLeft = 60,
     timeElapsed = 0;
 
-    savedHighScoresArr = [];
+savedScoresArr = [];
 
 // initializing function
 init();
@@ -147,7 +147,7 @@ function saveScore(event) {
             name: thisName,
             score: thisScore
         };
-        savedHighScoresArr.push(thisToSave);
+        savedScoresArr.push(thisToSave);
         storeScores();
         // clear the list of any previously rendered scores, and THEN
         highscoresList.innerHTML = '';
@@ -171,25 +171,25 @@ function goBack(event) {
 };
 
 function clearHighScores() {
-    for (let i = 0; i < savedHighScoresArr.length;) {
-        savedHighScoresArr.pop();
+    for (let i = 0; i < savedScoresArr.length;) {
+        savedScoresArr.pop();
     }
     storeScores();
     renderScores();
 };
 
 function renderScores() {
-    if (savedHighScoresArr.length < 1) {
+    // display nothing in the highscores list, if there are no scores to display! (duh)
+    if (savedScoresArr.length < 1) {
         highscoresList.innerHTML = ''
     } else {
-        // not super sure how this sorting thing works, but I found it online, and it allows me to sort the list by score, instead of just most recently added, so thats cool
-        // I will need to figure out exactly what it is doing at some point 
-        var sorted = savedHighScoresArr.slice(0);
-        sorted.sort(function(a,b) {
+        // Found the .sort() function when looking for a way to list the scores based on actual score, 
+        // and not just by time entered. 
+        savedScoresArr.sort(function (a, b) {
             return b.score - a.score;
         });
-        
-        for (let i = 0; i < sorted.length; i++) {
+
+        for (let i = 0; i < savedScoresArr.length; i++) {
             var tr = document.createElement("tr");
 
             var th = document.createElement("th");
@@ -197,16 +197,17 @@ function renderScores() {
             th.innerHTML = (i + 1);
 
             var nameforlist = document.createElement("td"),
-                name = sorted[i].name;
+                name = savedScoresArr[i].name;
             // wrote a little tid-bit here that will capitalize the first letter of your name, in case you forgot to when typing it in. 
             nameforlist.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
 
             var scoreforlist = document.createElement("td");
-            scoreforlist.innerHTML = sorted[i].score;
+            scoreforlist.innerHTML = savedScoresArr[i].score;
 
             tr.appendChild(th);
             tr.appendChild(nameforlist);
             tr.appendChild(scoreforlist);
+            // here I can append a time taken thing
             highscoresList.appendChild(tr);
         };
     };
@@ -218,14 +219,14 @@ function init() {
     if (!localScores) {
         return;
     } else {
-        savedHighScoresArr = localScores;
+        savedScoresArr = localScores;
     };
     renderScores();
 };
 
 // here is the little function that stores the scores objects to the local storage with the use of JSON
 function storeScores() {
-    localStorage.setItem("saved-scores", JSON.stringify(savedHighScoresArr));
+    localStorage.setItem("saved-scores", JSON.stringify(savedScoresArr));
 };
 
 // main functions for showing and hiding divs and buttons and such, so that
