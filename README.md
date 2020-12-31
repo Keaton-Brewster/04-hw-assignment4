@@ -1,4 +1,4 @@
-API Code Quiz
+Quiz Code
 =====
 ### Homework assignment for week 4 of bootcamp
 
@@ -32,5 +32,10 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
 ```
+Here I should note that I did chose to make a couple of changes in my code that 
+do not exactly match the acceptance criteria. However I feel that I changes I made are inconsequential to the
+functionality and goal of the assignment
+
+> I made the subject matter related to Smash Bros by Nintendo
 
 View working version: https://keaton-brewster.github.io/JS-based-Quiz/
