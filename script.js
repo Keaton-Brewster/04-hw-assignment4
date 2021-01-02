@@ -99,14 +99,18 @@ function checkAnswer(page, nextPage) {
             }
             else if (answer === "wrong") {
                 timeLeft -= 10;
-                show(notification);
-                disable(allButtons);
-                setTimeout(() => {
-                    hide(page);
-                    hide(notification);
-                    show(nextPage);
-                    enable(allButtons);
-                }, 1000);
+                if (timeLeft < 1) {
+                    return;
+                } else {
+                    show(notification);
+                    disable(allButtons);
+                    setTimeout(() => {
+                        hide(page);
+                        hide(notification);
+                        show(nextPage);
+                        enable(allButtons);
+                    }, 1000);
+                }
             };
             // check to see if the last question has been answered, and if so end the test and give results
             if (currentQuestion === "tenth-Q") {
@@ -123,9 +127,7 @@ function checkAnswer(page, nextPage) {
 function endQuiz() {
     clearInterval(timer);
     hide(timerDiv);
-    setTimeout(() => {
-        hideAll(eachQ_Arr);
-    }, 1005);
+    hideAll(eachQ_Arr);
     show(viewHighScoreBtn);
     show(finalScore);
     if (score < 1) {
