@@ -100,7 +100,11 @@ function checkAnswer(page, nextPage) {
             else if (answer === "wrong") {
                 timeLeft -= 10;
                 if (timeLeft < 1) {
-                    return;
+                    show(notification);
+                    disable(allButtons);
+                    setTimeout(() => {
+                        return;
+                    }, 250);
                 } else {
                     show(notification);
                     disable(allButtons);
