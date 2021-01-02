@@ -95,7 +95,7 @@ function checkAnswer(page, nextPage) {
                     hide(notification);
                     show(nextPage);
                     enable(allButtons);
-                }, 990);
+                }, 1000);
             }
             else if (answer === "wrong") {
                 timeLeft -= 10;
@@ -106,7 +106,7 @@ function checkAnswer(page, nextPage) {
                     hide(notification);
                     show(nextPage);
                     enable(allButtons);
-                }, 990);
+                }, 1000);
             };
             // check to see if the last question has been answered, and if so end the test and give results
             if (currentQuestion === "tenth-Q") {
