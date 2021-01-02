@@ -95,7 +95,7 @@ function checkAnswer(page, nextPage) {
                     hide(notification);
                     show(nextPage);
                     enable(allButtons);
-                }, 1000);
+                }, 990);
             }
             else if (answer === "wrong") {
                 timeLeft -= 10;
@@ -106,7 +106,7 @@ function checkAnswer(page, nextPage) {
                     hide(notification);
                     show(nextPage);
                     enable(allButtons);
-                }, 1000);
+                }, 990);
             };
             // check to see if the last question has been answered, and if so end the test and give results
             if (currentQuestion === "tenth-Q") {
@@ -123,7 +123,9 @@ function checkAnswer(page, nextPage) {
 function endQuiz() {
     clearInterval(timer);
     hide(timerDiv);
-    hideAll(eachQ_Arr)
+    setTimeout(() => {
+        hideAll(eachQ_Arr);
+    }, 1005);
     show(viewHighScoreBtn);
     show(finalScore);
     if (score < 1) {
@@ -221,7 +223,7 @@ function renderScores() {
             scoreforlist.innerHTML = savedScoresArr[i].score;
 
             var timeforlist = document.createElement("td");
-            timeforlist.innerHTML = "0:" + savedScoresArr[i].time 
+            timeforlist.innerHTML = "0:" + savedScoresArr[i].time
 
             tr.appendChild(th);
             tr.appendChild(nameforlist);
