@@ -15,6 +15,7 @@ var timerDiv = document.querySelector("#timer"),
     eachQ_Arr = [firstQ_Page, secondQ_Page, thirdQ_Page,
         fourthQ_Page, fifthQ_Page, sixthQ_Page, seventhQ_Page,
         eighthQ_Page, ninthQ_Page, tenthQ_Page],
+    allNotifs = document.querySelectorAll("#notif"),
     finalScore = document.querySelector("#final-score"),
     finalScoreSpan = document.querySelector("#final-score-span"),
     highscoresDiv = document.querySelector("#high-scores"),
@@ -59,6 +60,7 @@ function startQuiz() {
     show(firstQ_Page);
     hide(startPage);
     hide(viewHighScoreBtn);
+    hideAll(allNotifs);
 
     // timer interval. 
     timer = setInterval(() => {
@@ -88,14 +90,22 @@ function checkAnswer(page, nextPage) {
 
             if (answer === "correct") {
                 score += 10;
-                show(notification);
-                disable(allButtons);
-                setTimeout(() => {
-                    hide(page);
-                    hide(notification);
-                    show(nextPage);
-                    enable(allButtons);
-                }, 1000);
+                if (timeLeft < 3) {
+                    show(notification);
+                    disable(allButtons);
+                    setTimeout(() => {
+                        endQuiz();
+                    }, 250);
+                } else {
+                    show(notification);
+                    disable(allButtons);
+                    setTimeout(() => {
+                        hide(page);
+                        hide(notification);
+                        show(nextPage);
+                        enable(allButtons);
+                    }, 1000);
+                }
             }
             else if (answer === "wrong") {
                 timeLeft -= 10;
@@ -103,7 +113,7 @@ function checkAnswer(page, nextPage) {
                     show(notification);
                     disable(allButtons);
                     setTimeout(() => {
-                        return;
+                        endQuiz();
                     }, 250);
                 } else {
                     show(notification);
@@ -134,6 +144,7 @@ function endQuiz() {
     hideAll(eachQ_Arr);
     show(viewHighScoreBtn);
     show(finalScore);
+    enable(allButtons);
     if (score < 1) {
         finalScoreSpan.innerHTML = 0;
     } else {
@@ -174,8 +185,18 @@ function saveScore(event) {
         return;
     } else {
         var thisName = userChosenName.value.trim('');
-        thisScore = score + timeLeft;
-        thisTime = timeElapsed;
+        var thisScore;
+        var thisTime;
+        if (score < 1) {
+            thisScore = 0;
+        } else {
+            thisScore = score + timeLeft;
+        };
+        if (timeElapsed < 10) {
+            thisTime = "0" + timeElapsed
+        } else {
+            thisTime = timeElapsed;
+        };
         var thisToSave = {
             name: thisName,
             score: thisScore,
