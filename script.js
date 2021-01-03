@@ -90,7 +90,7 @@ function checkAnswer(page, nextPage) {
 
             if (answer === "correct") {
                 score += 10;
-                if (timeLeft < 3) {
+                if (timeLeft < 1) {
                     show(notification);
                     disable(allButtons);
                     setTimeout(() => {
@@ -213,6 +213,12 @@ function saveScore(event) {
 };
 
 
+// here is the little function that stores the scores objects to the local storage with the use of JSON
+function storeScores() {
+    localStorage.setItem("saved-scores", JSON.stringify(savedScoresArr));
+};
+
+
 // this function clears the array AND the localStorage, then renders the list again. 
 function clearHighScores() {
     for (let i = 0; i < savedScoresArr.length;) {
@@ -259,12 +265,6 @@ function renderScores() {
             highscoresList.appendChild(tr);
         };
     };
-};
-
-
-// here is the little function that stores the scores objects to the local storage with the use of JSON
-function storeScores() {
-    localStorage.setItem("saved-scores", JSON.stringify(savedScoresArr));
 };
 
 
