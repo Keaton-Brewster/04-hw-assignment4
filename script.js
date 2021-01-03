@@ -249,7 +249,7 @@ function renderScores() {
 
             var nameforlist = document.createElement("td"),
                 name = savedScoresArr[i].name;
-            // wrote a little tid-bit here that will capitalize the first letter of your name, in case you forgot to when typing it in. 
+            // wrote a little bit here that will capitalize the first letter of your name, in case you forgot to when typing it in. 
             nameforlist.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
 
             var scoreforlist = document.createElement("td");
