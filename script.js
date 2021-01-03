@@ -306,12 +306,12 @@ function showAll(arr) {
 // so that when you chose an answer, you cant also click a bunch of other answers before the next question comes up. 
 function enable(arr) {
     for (let i = 0; i < arr.length; i++) {
-        allButtons[i].disabled = false;
+        arr[i].disabled = false;
     };
 };
 function disable(arr) {
     for (let i = 0; i < arr.length; i++) {
-        allButtons[i].disabled = true
+        arr[i].disabled = true
     };
 };
 
