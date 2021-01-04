@@ -291,7 +291,6 @@ function hide(x) {
         x.classList.add("hide");
     };
 };
-
 function show(x) {
     if (x.length > 1) {
         for (let i = 0; i < x.length; i++) {
