@@ -13,7 +13,7 @@ var timerDiv = document.querySelector("#timer"),
     ninthQ_Page = document.querySelector("#ninth-Q"),
     tenthQ_Page = document.querySelector("#tenth-Q"),
     eachQele = document.querySelectorAll(".question"),
-    allNotifs =  document.querySelectorAll("#notif"),
+    allNotifs = document.querySelectorAll("#notif"),
     finalScore = document.querySelector("#final-score"),
     finalScoreSpan = document.querySelector("#final-score-span"),
     highscoresDiv = document.querySelector("#high-scores"),
@@ -197,9 +197,6 @@ function saveScore(event) {
         };
         savedScoresArr.push(thisToSave);
         storeScores();
-        // clear the list of any previously rendered scores, and THEN
-        highscoresList.innerHTML = '';
-        // Re render the list of scores stored in the local storage. 
         renderScores();
         viewHighScores();
     };
@@ -223,40 +220,38 @@ function clearHighScores() {
 
 
 function renderScores() {
-    // display nothing in the highscores list, if there are no scores to display! (duh)
-    if (savedScoresArr.length < 1) {
-        highscoresList.innerHTML = ''
-    } else {
-        // Found the .sort() function when looking for a way to list the scores based on actual score, 
-        // and not just by time entered. 
-        savedScoresArr.sort(function (a, b) {
-            return b.score - a.score;
-        });
+    // clear the list of any previously rendered scores, as they will be rendered again as a result of this function
+    highscoresList.innerHTML = ''
 
-        for (let i = 0; i < savedScoresArr.length; i++) {
-            var tr = document.createElement("tr");
+    // Found the .sort() function when looking for a way to list the scores based on actual score, 
+    // and not just by time entered. 
+    savedScoresArr.sort(function (a, b) {
+        return b.score - a.score;
+    });
 
-            var th = document.createElement("th");
-            th.setAttribute("scope", "row");
-            th.innerHTML = (i + 1);
+    for (let i = 0; i < savedScoresArr.length; i++) {
+        var tr = document.createElement("tr");
 
-            var nameForList = document.createElement("td"),
-                name = savedScoresArr[i].name;
-            // wrote a little bit here that will capitalize the first letter of your name, in case you forgot to when typing it in. 
-            nameForList.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
+        var th = document.createElement("th");
+        th.setAttribute("scope", "row");
+        th.innerHTML = (i + 1);
 
-            var scoreForList = document.createElement("td");
-            scoreForList.innerHTML = savedScoresArr[i].score;
+        var nameForList = document.createElement("td"),
+            name = savedScoresArr[i].name;
+        // wrote a little bit here that will capitalize the first letter of your name, in case you forgot to when typing it in. 
+        nameForList.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
 
-            var timeForList = document.createElement("td");
-            timeForList.innerHTML = "0:" + savedScoresArr[i].time
+        var scoreForList = document.createElement("td");
+        scoreForList.innerHTML = savedScoresArr[i].score;
 
-            tr.appendChild(th);
-            tr.appendChild(nameForList);
-            tr.appendChild(scoreForList);
-            tr.appendChild(timeForList);
-            highscoresList.appendChild(tr);
-        };
+        var timeForList = document.createElement("td");
+        timeForList.innerHTML = "0:" + savedScoresArr[i].time
+
+        tr.appendChild(th);
+        tr.appendChild(nameForList);
+        tr.appendChild(scoreForList);
+        tr.appendChild(timeForList);
+        highscoresList.appendChild(tr);
     };
 };
 
