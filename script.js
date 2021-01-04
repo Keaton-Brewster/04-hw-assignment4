@@ -88,41 +88,11 @@ function checkAnswer(page, nextPage) {
 
             if (answer === "correct") {
                 score += 10;
-                if (timeLeft < 2) {
-                    show(notification);
-                    disable(allButtons);
-                    setTimeout(() => {
-                        endQuiz();
-                    }, 250);
-                } else {
-                    show(notification);
-                    disable(allButtons);
-                    setTimeout(() => {
-                        hide(page);
-                        hide(notification);
-                        show(nextPage);
-                        enable(allButtons);
-                    }, 1000);
-                }
+                process();
             }
             else if (answer === "wrong") {
                 timeLeft -= 10;
-                if (timeLeft < 2) {
-                    show(notification);
-                    disable(allButtons);
-                    setTimeout(() => {
-                        endQuiz();
-                    }, 250);
-                } else {
-                    show(notification);
-                    disable(allButtons);
-                    setTimeout(() => {
-                        hide(page);
-                        hide(notification);
-                        show(nextPage);
-                        enable(allButtons);
-                    }, 1000);
-                }
+                process();
             };
             // check to see if the last question has been answered, and if so end the test and give results
             if (currentQuestion === "tenth-Q") {
@@ -131,6 +101,28 @@ function checkAnswer(page, nextPage) {
                 }, 1000);
             };
         };
+
+        // local function to handle where to go, based on how much time is left in the quiz. 
+        // if there is only 2 seconds left, it is determined not enough time to answer another question
+        // and so the quiz will end.
+        function process() {
+            if (timeLeft < 2) {
+                show(notification);
+                disable(allButtons);
+                setTimeout(() => {
+                    endQuiz();
+                }, 250);
+            } else {
+                show(notification);
+                disable(allButtons);
+                setTimeout(() => {
+                    hide(page);
+                    hide(notification);
+                    show(nextPage);
+                    enable(allButtons);
+                }, 1000);
+            };
+        }
     });
 };
 
