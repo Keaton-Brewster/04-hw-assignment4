@@ -12,7 +12,7 @@ var timerDiv = document.querySelector("#timer"),
     eighthQ_Page = document.querySelector("#eighth-Q"),
     ninthQ_Page = document.querySelector("#ninth-Q"),
     tenthQ_Page = document.querySelector("#tenth-Q"),
-    eachQele = document.querySelectorAll(".question");
+    eachQele = document.querySelectorAll(".question"),
     allNotifs = document.querySelectorAll("#notif"),
     finalScore = document.querySelector("#final-score"),
     finalScoreSpan = document.querySelector("#final-score-span"),
@@ -140,9 +140,9 @@ function endQuiz() {
     clearInterval(timer);
     hide(timerDiv);
     hideAll(eachQele);
+    hideAll(allNotifs);
     show(viewHighScoreBtn);
     show(finalScore);
-    hideAll(allNotifs);
     enable(allButtons);
     if (score < 1) {
         finalScoreSpan.innerHTML = 0;
