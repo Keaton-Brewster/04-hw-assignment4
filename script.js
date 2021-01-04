@@ -13,7 +13,7 @@ var timerDiv = document.querySelector("#timer"),
     ninthQ_Page = document.querySelector("#ninth-Q"),
     tenthQ_Page = document.querySelector("#tenth-Q"),
     eachQele = document.querySelectorAll(".question"),
-    allNotifs = document.querySelectorAll("#notif"),
+    allNotifs =  document.querySelectorAll("#notif"),
     finalScore = document.querySelector("#final-score"),
     finalScoreSpan = document.querySelector("#final-score-span"),
     highscoresDiv = document.querySelector("#high-scores"),
@@ -58,7 +58,7 @@ function startQuiz() {
     show(firstQ_Page);
     hide(startPage);
     hide(viewHighScoreBtn);
-    hideAll(allNotifs);
+    hide(allNotifs);
 
     // timer interval. 
     timer = setInterval(() => {
@@ -139,8 +139,8 @@ function checkAnswer(page, nextPage) {
 function endQuiz() {
     clearInterval(timer);
     hide(timerDiv);
-    hideAll(eachQele);
-    hideAll(allNotifs);
+    hide(eachQele);
+    hide(allNotifs);
     show(viewHighScoreBtn);
     show(finalScore);
     enable(allButtons);
@@ -168,7 +168,7 @@ function goBack(event) {
 
     if (click.matches("#go-back")) {
         clearInterval(timer);
-        hideAll(eachQele)
+        hide(eachQele)
         hide(timerDiv);
         hide(finalScore);
         hide(highscoresDiv);
@@ -281,23 +281,25 @@ function init() {
 
 // main functions for showing and hiding divs and buttons and such, so that
 // it appears as though you are going through different webpages, but it is all still done inside one webpage. 
-function hide(ele) {
-    ele.classList.add("hide");
-};
-// this one will loop through an array and apply hide to all of them. 
-function hideAll(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        hide(arr[i]);
+function hide(x) {
+    // check if argument contains more than one element, to determine the method for hiding
+    if (x.length > 1) {
+        for (let i = 0; i < x.length; i++) {
+            x[i].classList.add("hide");
+        };
+    } else {
+        x.classList.add("hide");
     };
 };
-function show(ele) {
-    ele.classList.remove("hide");
-};
-// same as hideAll, but SHOW instead (obviously lol)
-function showAll(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        show(arr[i]);
-    };
+
+function show(x) {
+    if (x.length > 1) {
+        for (let i = 0; i < x.length; i++) {
+            x[i].classList.remove("hide");
+        };
+    } else {
+        x.classList.remove("hide");
+    }
 };
 
 
