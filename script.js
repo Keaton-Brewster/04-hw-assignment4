@@ -12,9 +12,7 @@ var timerDiv = document.querySelector("#timer"),
     eighthQ_Page = document.querySelector("#eighth-Q"),
     ninthQ_Page = document.querySelector("#ninth-Q"),
     tenthQ_Page = document.querySelector("#tenth-Q"),
-    eachQ_Arr = [firstQ_Page, secondQ_Page, thirdQ_Page,
-        fourthQ_Page, fifthQ_Page, sixthQ_Page, seventhQ_Page,
-        eighthQ_Page, ninthQ_Page, tenthQ_Page],
+    eachQele = document.querySelectorAll(".question");
     allNotifs = document.querySelectorAll("#notif"),
     finalScore = document.querySelector("#final-score"),
     finalScoreSpan = document.querySelector("#final-score-span"),
@@ -90,7 +88,7 @@ function checkAnswer(page, nextPage) {
 
             if (answer === "correct") {
                 score += 10;
-                if (timeLeft < 1) {
+                if (timeLeft < 2) {
                     show(notification);
                     disable(allButtons);
                     setTimeout(() => {
@@ -109,7 +107,7 @@ function checkAnswer(page, nextPage) {
             }
             else if (answer === "wrong") {
                 timeLeft -= 10;
-                if (timeLeft < 1) {
+                if (timeLeft < 2) {
                     show(notification);
                     disable(allButtons);
                     setTimeout(() => {
@@ -141,9 +139,10 @@ function checkAnswer(page, nextPage) {
 function endQuiz() {
     clearInterval(timer);
     hide(timerDiv);
-    hideAll(eachQ_Arr);
+    hideAll(eachQele);
     show(viewHighScoreBtn);
     show(finalScore);
+    hideAll(allNotifs);
     enable(allButtons);
     if (score < 1) {
         finalScoreSpan.innerHTML = 0;
@@ -169,7 +168,7 @@ function goBack(event) {
 
     if (click.matches("#go-back")) {
         clearInterval(timer);
-        hideAll(eachQ_Arr)
+        hideAll(eachQele)
         hide(timerDiv);
         hide(finalScore);
         hide(highscoresDiv);
