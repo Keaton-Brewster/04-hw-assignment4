@@ -177,12 +177,14 @@ function saveScore(event) {
     } else {
         var thisName = userChosenName.value.trim('');
         var thisScore;
-        var thisTime;
+        // ensure score is not a negative number
         if (score < 1) {
             thisScore = 0;
         } else {
             thisScore = score + timeLeft;
         };
+        var thisTime;
+        // ensure the display formatting for the time is correct/standard
         if (timeElapsed < 10) {
             thisTime = "0" + timeElapsed
         } else {
