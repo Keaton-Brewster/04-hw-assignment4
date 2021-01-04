@@ -240,21 +240,21 @@ function renderScores() {
             th.setAttribute("scope", "row");
             th.innerHTML = (i + 1);
 
-            var nameforlist = document.createElement("td"),
+            var nameForList = document.createElement("td"),
                 name = savedScoresArr[i].name;
             // wrote a little bit here that will capitalize the first letter of your name, in case you forgot to when typing it in. 
-            nameforlist.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
+            nameForList.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
 
-            var scoreforlist = document.createElement("td");
-            scoreforlist.innerHTML = savedScoresArr[i].score;
+            var scoreForList = document.createElement("td");
+            scoreForList.innerHTML = savedScoresArr[i].score;
 
-            var timeforlist = document.createElement("td");
-            timeforlist.innerHTML = "0:" + savedScoresArr[i].time
+            var timeForList = document.createElement("td");
+            timeForList.innerHTML = "0:" + savedScoresArr[i].time
 
             tr.appendChild(th);
-            tr.appendChild(nameforlist);
-            tr.appendChild(scoreforlist);
-            tr.appendChild(timeforlist);
+            tr.appendChild(nameForList);
+            tr.appendChild(scoreForList);
+            tr.appendChild(timeForList);
             highscoresList.appendChild(tr);
         };
     };
