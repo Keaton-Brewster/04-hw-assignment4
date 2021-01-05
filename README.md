@@ -40,7 +40,7 @@ View working version: https://keaton-brewster.github.io/JS-based-Quiz/
 
 Images:
 
-![Screen Shot 2021-01-02 at 12 58 03 PM](https://user-images.githubusercontent.com/65474893/103464592-a349f480-4cfa-11eb-8616-14061b2ff95d.png)
-![Screen Shot 2021-01-02 at 12 58 14 PM](https://user-images.githubusercontent.com/65474893/103464598-aba22f80-4cfa-11eb-897d-09ecef4af7ef.png)
+![s1](https://user-images.githubusercontent.com/65474893/103606859-20cd5a80-4edd-11eb-8eb6-e14d3c5221f7.png)
+![s2](https://user-images.githubusercontent.com/65474893/103606879-29be2c00-4edd-11eb-9015-c90d1aa316f8.png)
 ![Screen Shot 2021-01-02 at 12 58 47 PM](https://user-images.githubusercontent.com/65474893/103464601-b0ff7a00-4cfa-11eb-8443-04aebfdde48d.png)
 ![Screen Shot 2021-01-02 at 12 58 52 PM](https://user-images.githubusercontent.com/65474893/103464607-b65cc480-4cfa-11eb-9738-e0ef15735db5.png)
