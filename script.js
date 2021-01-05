@@ -26,7 +26,7 @@ init();
 // function that runs when you click "start quiz"
 function startQuiz() {
     // enable all buttons, in case any were left disabled after the last quiz
-    enable(allButtons);
+    flip(allButtons, "on");
     // clear the timer interval so that when you start a new quiz, you start with a fresh timer, then set the timer
     clearInterval(timer);
     timeLeft = 60;
@@ -84,11 +84,11 @@ function checkAnswer(event) {
     function process() {
         if (timeLeft < 2) {
             show(notification);
-            disable(allButtons);
+            flip(allButtons, "off");
             endQuiz();
         } else {
             show(notification);
-            disable(allButtons);
+            flip(allButtons, "off");
             setTimeout(() => {
                 document.querySelector("#Q-" + currQ).classList.add("hide");
                 hide(notification);
@@ -96,7 +96,7 @@ function checkAnswer(event) {
                     endQuiz();
                 } else {
                     document.querySelector("#Q-" + nextQ).classList.remove("hide");
-                    enable(allButtons);
+                    flip(allButtons, "on");
                     currQ++;
                     nextQ++;
                 }
@@ -113,7 +113,7 @@ function endQuiz() {
     hideAll(allNotifs);
     show(viewHighScoreBtn);
     show(finalScore);
-    enable(allButtons);
+    flip(allButtons, "on");
     if (score < 1) {
         finalScoreSpan.innerHTML = 0;
     } else {
@@ -260,15 +260,16 @@ function showAll(x) {
 
 // functions to enable and disable buttons for the answerCheck()
 // so that when you chose an answer, you cant also click a bunch of other answers before the next question comes up. 
-function enable(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        arr[i].disabled = false;
-    };
-};
-function disable(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        arr[i].disabled = true
-    };
+function flip(x, y) {
+    if (y === "on") {
+        for (let i = 0; i < x.length; i++) {
+            x[i].disabled = false;
+        };
+    } else if (y === "off") {
+        for (let i = 0; i < x.length; i++) {
+            x[i].disabled = true
+        };
+    }
 };
 
 // button handlers
