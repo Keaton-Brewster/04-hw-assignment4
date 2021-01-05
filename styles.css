@@ -35,6 +35,7 @@ button:focus {
 
 #notif {
     padding: 5px;
+    margin-bottom: -16px;
     transform: translate(-15px);
     border-radius: 0 5px 5px 0;
 }
