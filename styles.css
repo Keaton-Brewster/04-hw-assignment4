@@ -13,6 +13,10 @@ button:focus {
     outline: none;
 }
 
+h2.card-header {
+    height: 3em;
+}
+
 .card-footer {
     margin-bottom: 1px;
 }
