@@ -13,14 +13,14 @@ var timerDiv = document.querySelector("#timer"),
     viewHighScoreBtn = document.querySelector("#view-high-scores"),
     userChosenName = document.querySelector("#user-chosen-name"),
     goBackBtn = document.querySelectorAll("#go-back"),
-    
+
     score = 0,
     timeLeft = 60,
     timeElapsed = 0,
     currQ,
     nextQ,
     savedScoresArr = [];
-    
+
 init();
 
 // function that runs when you click "start quiz"
