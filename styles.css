@@ -33,11 +33,19 @@ button:focus {
     width: 40em;
 }
 
+#notif {
+    padding: 5px;
+    transform: translate(-15px);
+    border-radius: 0 5px 5px 0;
+}
+
 .wrong {
-    background-color: #b51e2b;
+    color: white;
+    background-color: #e02e3d;
 }
 
 .correct {
+    color: white;
     background-color: #34ac0c;
 }
 
