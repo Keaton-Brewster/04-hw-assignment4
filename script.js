@@ -90,12 +90,12 @@ function checkAnswer(event) {
             show(notification);
             flip(allButtons, "off");
             setTimeout(() => {
-                $("#Q-" + currQ).addClass("hide");
+                document.querySelector("#Q-" + currQ).classList.add("hide");
                 hide(notification);
                 if (currentQuestion === "Q-10") {
                     endQuiz();
                 } else {
-                    $("#Q-" + nextQ).removeClass("hide");
+                    document.querySelector("#Q-" + nextQ).classList.remove("hide");
                     flip(allButtons, "on");
                     currQ++;
                     nextQ++;
@@ -273,11 +273,11 @@ function flip(x, y) {
 };
 
 // button handlers
-$("#start-quiz-btn").on("click", startQuiz);
-$("#all-questions").on("click", checkAnswer);
-$("#save-score-btn").on("click", saveScore);
-$(document).on("click", goBack);
+document.querySelector("#start-quiz-btn").addEventListener("click", startQuiz);
+document.querySelector("#all-questions").addEventListener("click", checkAnswer);
+document.querySelector("#save-score-btn").addEventListener("click", saveScore);
+document.addEventListener("click", goBack);
 viewHighScoreBtn.addEventListener("click", viewHighScores);
-$("#clear-high-scores").on("click", clearHighScores);
+document.querySelector("#clear-high-scores").addEventListener("click", clearHighScores);
 
 
