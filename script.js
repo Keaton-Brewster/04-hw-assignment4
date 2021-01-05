@@ -2,16 +2,6 @@
 var timerDiv = document.querySelector("#timer"),
     timerSpan = document.querySelector("#timer-span"),
     startPage = document.querySelector("#start-page"),
-    firstQ_Page = document.querySelector("#first-Q"),
-    secondQ_Page = document.querySelector("#second-Q"),
-    thirdQ_Page = document.querySelector("#third-Q"),
-    fourthQ_Page = document.querySelector("#fourth-Q"),
-    fifthQ_Page = document.querySelector("#fifth-Q"),
-    sixthQ_Page = document.querySelector("#sixth-Q"),
-    seventhQ_Page = document.querySelector("#seventh-Q"),
-    eighthQ_Page = document.querySelector("#eighth-Q"),
-    ninthQ_Page = document.querySelector("#ninth-Q"),
-    tenthQ_Page = document.querySelector("#tenth-Q"),
     eachQele = document.querySelectorAll(".question"),
     allNotifs = document.querySelectorAll("#notif"),
     finalScore = document.querySelector("#final-score"),
@@ -30,14 +20,17 @@ var timerDiv = document.querySelector("#timer"),
 
     score = 0,
     timeLeft = 60,
-    timeElapsed = 0;
+    timeElapsed = 0,
 
-savedScoresArr = [];
+    // will experiment, and I see if I can implement a different method
+    // to use let variables.. 
+    currQ,
+    nextQ,
 
+    savedScoresArr = [];
 
 // initializing function
 init();
-
 
 // function that runs when you click "start quiz"
 function startQuiz() {
@@ -47,18 +40,20 @@ function startQuiz() {
     clearInterval(timer);
     timeLeft = 60;
     timeElapsed = 0;
+    currQ = 1;
+    nextQ = currQ + 1;
     // make sure the score starts at 0 so you don't get your last results added to your next quiz. 
     score = 0;
     // timer starts at 60 'seconds'
     timerSpan.innerHTML = timeLeft;
     // clear the text input from the last time you may have saved a score
-    userChosenName.innerHTML = '';
+    userChosenName.value = '';
 
     show(timerDiv);
-    show(firstQ_Page);
+    show(document.querySelector("#Q-1"));
     hide(startPage);
     hide(viewHighScoreBtn);
-    hide(allNotifs);
+    hideAll(allNotifs);
 
     // timer interval. 
     timer = setInterval(() => {
@@ -74,56 +69,50 @@ function startQuiz() {
 
 
 // This is the function that gets run when you choose an answer in the quiz.
-function checkAnswer(page, nextPage) {
-    // register the click on the button as an event by adding this listener, so that we can use the event for variables.
-    page.addEventListener("click", function (event) {
+function checkAnswer(event) {
+    event.preventDefault();
+    if (event.target.getAttribute("name") === "answer") {
         currentQuestion = event.target.parentElement.parentElement.parentElement.getAttribute("id");
-        // Then I check to make sure the user chose one of the available answers
+        // check the ID of the answer they chose, which I have already set to either 'correct' or 'wrong'
+        answer = event.target.getAttribute("id");
+        // assign the correct/wrong notification to a variable so we can easily show and hide it
+        notification = event.target.nextElementSibling;
 
-        if (event.target.matches("button")) {
-            // check the ID of the answer they chose, which I have already set to either 'correct' or 'wrong'
-            answer = event.target.getAttribute("id");
-            // assign the correct/wrong notification to a variable so we can easily show and hide it
-            notification = event.target.nextElementSibling;
-
-            if (answer === "correct") {
-                score += 10;
-                process();
-            }
-            else if (answer === "wrong") {
-                timeLeft -= 10;
-                process();
-            };
-            // check to see if the last question has been answered, and if so end the test and give results
-            if (currentQuestion === "tenth-Q") {
-                setTimeout(() => {
-                    endQuiz();
-                }, 1000);
-            };
-        };
-
-        // local function to handle where to go, based on how much time is left in the quiz. 
-        // if there is only 2 seconds left, it is determined not enough time to answer another question
-        // and so the quiz will end.
-        function process() {
-            if (timeLeft < 2) {
-                show(notification);
-                disable(allButtons);
-                setTimeout(() => {
-                    endQuiz();
-                }, 250);
-            } else {
-                show(notification);
-                disable(allButtons);
-                setTimeout(() => {
-                    hide(page);
-                    hide(notification);
-                    show(nextPage);
-                    enable(allButtons);
-                }, 1000);
-            };
+        if (answer === "correct") {
+            score += 10;
+            process();
         }
-    });
+        else if (answer === "wrong") {
+            timeLeft -= 10;
+            process();
+        };
+    };
+
+    // local function to handle where to go, based on how much time is left in the quiz. 
+    // if there is only 2 seconds left, it is determined not enough time to answer another question
+    // and so the quiz will end.
+    function process() {
+        if (timeLeft < 2) {
+            show(notification);
+            disable(allButtons);
+            endQuiz();
+        } else {
+            show(notification);
+            disable(allButtons);
+            setTimeout(() => {
+                document.querySelector("#Q-" + currQ).classList.add("hide");
+                hide(notification);
+                if (currentQuestion === "Q-10") {
+                    endQuiz();
+                } else {
+                    document.querySelector("#Q-" + nextQ).classList.remove("hide");
+                    enable(allButtons);
+                    currQ++;
+                    nextQ++;
+                }
+            }, 600);
+        };
+    }
 };
 
 
@@ -131,8 +120,8 @@ function checkAnswer(page, nextPage) {
 function endQuiz() {
     clearInterval(timer);
     hide(timerDiv);
-    hide(eachQele);
-    hide(allNotifs);
+    hideAll(eachQele);
+    hideAll(allNotifs);
     show(viewHighScoreBtn);
     show(finalScore);
     enable(allButtons);
@@ -160,7 +149,7 @@ function goBack(event) {
 
     if (click.matches("#go-back")) {
         clearInterval(timer);
-        hide(eachQele)
+        hideAll(eachQele)
         hide(timerDiv);
         hide(finalScore);
         hide(highscoresDiv);
@@ -190,12 +179,12 @@ function saveScore(event) {
         } else {
             thisTime = timeElapsed;
         };
-        var thisToSave = {
+        var statsToSave = {
             name: thisName,
             score: thisScore,
             time: thisTime
         };
-        savedScoresArr.push(thisToSave);
+        savedScoresArr.push(statsToSave);
         storeScores();
         renderScores();
         viewHighScores();
@@ -271,23 +260,20 @@ function init() {
 // main functions for showing and hiding divs and buttons and such, so that
 // it appears as though you are going through different webpages, but it is all still done inside one webpage. 
 function hide(x) {
-    // check if argument contains more than one element, to determine the method for hiding
-    if (x.length > 1) {
-        for (let i = 0; i < x.length; i++) {
-            x[i].classList.add("hide");
-        };
-    } else {
-        x.classList.add("hide");
-    };
+    x.classList.add("hide");
 };
 function show(x) {
-    if (x.length > 1) {
-        for (let i = 0; i < x.length; i++) {
-            x[i].classList.remove("hide");
-        };
-    } else {
-        x.classList.remove("hide");
-    }
+    x.classList.remove("hide");
+};
+function hideAll(x) {
+    for (let i = 0; i < x.length; i++) {
+        x[i].classList.add("hide");
+    };
+};
+function showAll(x) {
+    for (let i = 0; i < x.length; i++) {
+        x[i].classList.remove("hide");
+    };
 };
 
 
@@ -307,17 +293,7 @@ function disable(arr) {
 
 startQuizBtn.addEventListener("click", startQuiz); // start quiz button
 
-// handlers for the answers in the quiz
-firstQ_Page.addEventListener("click", checkAnswer(firstQ_Page, secondQ_Page));
-secondQ_Page.addEventListener("click", checkAnswer(secondQ_Page, thirdQ_Page));
-thirdQ_Page.addEventListener("click", checkAnswer(thirdQ_Page, fourthQ_Page));
-fourthQ_Page.addEventListener("click", checkAnswer(fourthQ_Page, fifthQ_Page));
-fifthQ_Page.addEventListener("click", checkAnswer(fifthQ_Page, sixthQ_Page));
-sixthQ_Page.addEventListener("click", checkAnswer(sixthQ_Page, seventhQ_Page));
-seventhQ_Page.addEventListener("click", checkAnswer(seventhQ_Page, eighthQ_Page));
-eighthQ_Page.addEventListener("click", checkAnswer(eighthQ_Page, ninthQ_Page));
-ninthQ_Page.addEventListener("click", checkAnswer(ninthQ_Page, tenthQ_Page));
-tenthQ_Page.addEventListener("click", checkAnswer(tenthQ_Page, finalScore));
+document.querySelector("#all-questions").addEventListener("click", checkAnswer)
 
 // handler for save score button
 saveScoreBtn.addEventListener("click", saveScore);
