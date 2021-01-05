@@ -8,28 +8,19 @@ var timerDiv = document.querySelector("#timer"),
     finalScoreSpan = document.querySelector("#final-score-span"),
     highscoresDiv = document.querySelector("#high-scores"),
     highscoresList = document.querySelector("#list-of-scores"),
-
     // buttons and inputs
     allButtons = document.querySelectorAll("button"),
-    startQuizBtn = document.querySelector("#start-quiz-btn"),
     viewHighScoreBtn = document.querySelector("#view-high-scores"),
-    saveScoreBtn = document.querySelector("#save-score-btn"),
     userChosenName = document.querySelector("#user-chosen-name"),
     goBackBtn = document.querySelectorAll("#go-back"),
-    clearHighScoresBtn = document.querySelector("#clear-high-scores"),
-
+    
     score = 0,
     timeLeft = 60,
     timeElapsed = 0,
-
-    // will experiment, and I see if I can implement a different method
-    // to use let variables.. 
     currQ,
     nextQ,
-
     savedScoresArr = [];
-
-// initializing function
+    
 init();
 
 // function that runs when you click "start quiz"
@@ -66,7 +57,6 @@ function startQuiz() {
         }
     }, 1000);
 };
-
 
 // This is the function that gets run when you choose an answer in the quiz.
 function checkAnswer(event) {
@@ -115,7 +105,6 @@ function checkAnswer(event) {
     }
 };
 
-
 // function to end the quiz, either when you finish answering all the questions, or if the time runs out
 function endQuiz() {
     clearInterval(timer);
@@ -131,7 +120,6 @@ function endQuiz() {
         finalScoreSpan.innerHTML = score + timeLeft; // + timeLeft gives the user a bonus the faster they can complete the quiz!;
     }
 };
-
 
 // this function here shows the high scores screen. 
 // does so by the use of add and removing classes that CSS is influencing, with the use of "display: none;"
@@ -157,7 +145,6 @@ function goBack(event) {
         show(viewHighScoreBtn);
     };
 };
-
 
 function saveScore(event) {
     event.preventDefault();
@@ -191,12 +178,10 @@ function saveScore(event) {
     };
 };
 
-
 // here is the little function that stores the scores objects to the local storage with the use of JSON
 function storeScores() {
     localStorage.setItem("saved-scores", JSON.stringify(savedScoresArr));
 };
-
 
 // this function clears the array AND the localStorage, then renders the list again. 
 function clearHighScores() {
@@ -206,7 +191,6 @@ function clearHighScores() {
     storeScores();
     renderScores();
 };
-
 
 function renderScores() {
     // clear the list of any previously rendered scores, as they will be rendered again as a result of this function
@@ -244,7 +228,6 @@ function renderScores() {
     };
 };
 
-
 function init() {
     localScores = JSON.parse(localStorage.getItem("saved-scores"));
 
@@ -255,7 +238,6 @@ function init() {
     };
     renderScores();
 };
-
 
 // main functions for showing and hiding divs and buttons and such, so that
 // it appears as though you are going through different webpages, but it is all still done inside one webpage. 
@@ -276,7 +258,6 @@ function showAll(x) {
     };
 };
 
-
 // functions to enable and disable buttons for the answerCheck()
 // so that when you chose an answer, you cant also click a bunch of other answers before the next question comes up. 
 function enable(arr) {
@@ -290,21 +271,12 @@ function disable(arr) {
     };
 };
 
-
-startQuizBtn.addEventListener("click", startQuiz); // start quiz button
-
-document.querySelector("#all-questions").addEventListener("click", checkAnswer)
-
-// handler for save score button
-saveScoreBtn.addEventListener("click", saveScore);
-
-// handler for 'go back' button, applied to the whole document, since the button will appear in many different places at different times. 
+// button handlers
+document.querySelector("#start-quiz-btn").addEventListener("click", startQuiz);
+document.querySelector("#all-questions").addEventListener("click", checkAnswer);
+document.querySelector("#save-score-btn").addEventListener("click", saveScore);
 document.addEventListener("click", goBack);
-
-// handler for view high scores
 viewHighScoreBtn.addEventListener("click", viewHighScores);
-
-// handler for clearing the high scores
-clearHighScoresBtn.addEventListener("click", clearHighScores);
+document.querySelector("#clear-high-scores").addEventListener("click", clearHighScores);
 
 
