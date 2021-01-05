@@ -37,8 +37,6 @@ function startQuiz() {
     score = 0;
     // timer starts at 60 'seconds'
     timerSpan.innerHTML = timeLeft;
-    // clear the text input from the last time you may have saved a score
-    userChosenName.value = '';
 
     show(timerDiv);
     show(document.querySelector("#Q-1"));
@@ -107,6 +105,8 @@ function checkAnswer(event) {
 
 // function to end the quiz, either when you finish answering all the questions, or if the time runs out
 function endQuiz() {
+    // clear the text input from the last time you may have saved a score
+    userChosenName.value = '';
     clearInterval(timer);
     hide(timerDiv);
     hideAll(eachQele);
