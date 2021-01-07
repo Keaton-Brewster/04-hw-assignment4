@@ -212,12 +212,9 @@ function renderScores() {
 
 function init() {
     localScores = JSON.parse(localStorage.getItem("saved-scores"));
-
-    if (!localScores) {
-        return;
-    } else {
-        savedScoresArr = localScores;
-    };
+    // cancel if there is nothing in local storage
+    if (!localScores) { return } 
+    else { savedScoresArr = localScores };
     renderScores();
 };
 
