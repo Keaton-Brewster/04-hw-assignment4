@@ -25,7 +25,7 @@ var timerDiv = document.querySelector("#timer"),
 // function that runs when you click "start quiz"
 function startQuiz() {
     // enable all buttons, in case any were left disabled after the last quiz
-    flip(allButtons, "on");
+    buttonToggle(allButtons, "on");
     // clear the timer interval so that when you start a new quiz, you start with a fresh timer, then set the timer
     clearInterval(timer);
     timeLeft = 60;
@@ -81,11 +81,11 @@ function checkAnswer(event) {
     function process() {
         if (timeLeft < 2) {
             show(notification);
-            flip(allButtons, "off");
+            buttonToggle(allButtons, "off");
             endQuiz();
         } else {
             show(notification);
-            flip(allButtons, "off");
+            buttonToggle(allButtons, "off");
             setTimeout(() => {
                 document.querySelector("#Q-" + currQ).classList.add("hide");
                 hide(notification);
@@ -93,7 +93,7 @@ function checkAnswer(event) {
                     endQuiz();
                 } else {
                     document.querySelector("#Q-" + nextQ).classList.remove("hide");
-                    flip(allButtons, "on");
+                    buttonToggle(allButtons, "on");
                     currQ++;
                     nextQ++;
                 }
@@ -112,7 +112,7 @@ function endQuiz() {
     hideAll(allNotifs);
     show(viewHighScoreBtn);
     show(finalScore);
-    flip(allButtons, "on");
+    buttonToggle(allButtons, "on");
     if (score < 1) {
         finalScoreSpan.innerHTML = 0;
     } else {
@@ -259,7 +259,7 @@ function showAll(x) {
 
 // functions to enable and disable buttons for the answerCheck()
 // so that when you chose an answer, you cant also click a bunch of other answers before the next question comes up. 
-function flip(x, y) {
+function buttonToggle(x, y) {
     if (y === "on") {
         for (let i = 0; i < x.length; i++) {
             x[i].disabled = false;
