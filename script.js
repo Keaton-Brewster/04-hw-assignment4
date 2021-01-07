@@ -36,22 +36,19 @@ function startQuiz() {
     score = 0;
     // timer starts at 60 'seconds'
     timerSpan.innerHTML = timeLeft;
-
+    // showing and hiding the necessary elements
     show(timerDiv);
     show(document.querySelector("#Q-1"));
     hide(startPage);
     hide(viewHighScoreBtn);
     hideAll(allNotifs);
-
-    // timer interval. 
+    // Quiz timer
     timer = setInterval(() => {
         timeLeft--;
         timeElapsed++;
         timerSpan.innerHTML = timeLeft;
-        if (timeLeft < 1) {
-            // end the quiz if you run out of time. 
-            endQuiz();
-        }
+        // end the quiz if you run out of time. 
+        if (timeLeft < 1) { endQuiz() }
     }, 1000);
 };
 
@@ -64,15 +61,9 @@ function checkAnswer(event) {
         answer = event.target.getAttribute("id");
         // assign the correct/wrong notification to a variable so we can easily show and hide it
         notification = event.target.nextElementSibling;
-
-        if (answer === "correct") {
-            score += 10;
-            process();
-        }
-        else if (answer === "wrong") {
-            timeLeft -= 10;
-            process();
-        };
+        // check wether they are right or wrong!
+        if (answer === "correct") { score += 10; process() }
+        else if (answer === "wrong") { timeLeft -= 10; process() };
     };
 
     // local function to handle where to go, based on how much time is left in the quiz. 
@@ -89,9 +80,8 @@ function checkAnswer(event) {
             setTimeout(() => {
                 document.querySelector("#Q-" + currQ).classList.add("hide");
                 hide(notification);
-                if (currentQuestion === "Q-10") {
-                    endQuiz();
-                } else {
+                if (currentQuestion === "Q-10") { endQuiz() }
+                else {
                     document.querySelector("#Q-" + nextQ).classList.remove("hide");
                     buttonToggle(allButtons, "on");
                     currQ++;
@@ -113,11 +103,9 @@ function endQuiz() {
     show(viewHighScoreBtn);
     show(finalScore);
     buttonToggle(allButtons, "on");
-    if (score < 1) {
-        finalScoreSpan.innerHTML = 0;
-    } else {
-        finalScoreSpan.innerHTML = score + timeLeft; // + timeLeft gives the user a bonus the faster they can complete the quiz!;
-    }
+    if (score < 1) { finalScoreSpan.innerHTML = 0 }
+    // + timeLeft gives the user a bonus the faster they can complete the quiz!;
+    else { finalScoreSpan.innerHTML = score + timeLeft }
 };
 
 // this function here shows the high scores screen. 
@@ -153,18 +141,13 @@ function saveScore(event) {
         var thisName = userChosenName.value.trim('');
         var thisScore;
         // ensure score is not a negative number
-        if (score < 1) {
-            thisScore = 0;
-        } else {
-            thisScore = score + timeLeft;
-        };
+        if (score < 1) { thisScore = 0 }
+        else { thisScore = score + timeLeft };
         var thisTime;
         // ensure the display formatting for the time is correct/standard
-        if (timeElapsed < 10) {
-            thisTime = "0" + timeElapsed
-        } else {
-            thisTime = timeElapsed;
-        };
+        if (timeElapsed < 10) { thisTime = "0" + timeElapsed }
+        else { thisTime = timeElapsed };
+
         var statsToSave = {
             name: thisName,
             score: thisScore,
