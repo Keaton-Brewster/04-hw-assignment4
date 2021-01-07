@@ -21,7 +21,6 @@ var timerDiv = document.querySelector("#timer"),
     nextQ,
     savedScoresArr = [];
 
-init();
 
 // function that runs when you click "start quiz"
 function startQuiz() {
@@ -271,6 +270,9 @@ function flip(x, y) {
         };
     }
 };
+
+// initialize program, and then prepare event listeners. 
+init();
 
 // button handlers
 document.querySelector("#start-quiz-btn").addEventListener("click", startQuiz);
