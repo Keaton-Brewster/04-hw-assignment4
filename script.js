@@ -264,5 +264,3 @@ document.querySelector("#save-score-btn").addEventListener("click", saveScore);
 document.addEventListener("click", goBack);
 viewHighScoreBtn.addEventListener("click", viewHighScores);
 document.querySelector("#clear-high-scores").addEventListener("click", clearHighScores);
-
-
