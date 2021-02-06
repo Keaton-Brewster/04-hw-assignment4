@@ -1,6 +1,7 @@
-Quiz Code
+Quiz Code  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 =====
-### Homework assignment for week 4 of bootcamp
+### JavaScript powered Super Smash Brothers Quiz
 
 After learning about API, following a week on javascript, 
 I was given the assignment to make an interactive quiz that covers the topics
@@ -44,3 +45,6 @@ Images:
 ![s2](https://user-images.githubusercontent.com/65474893/103606879-29be2c00-4edd-11eb-9015-c90d1aa316f8.png)
 ![Screen Shot 2021-01-02 at 12 58 47 PM](https://user-images.githubusercontent.com/65474893/103464601-b0ff7a00-4cfa-11eb-8443-04aebfdde48d.png)
 ![Screen Shot 2021-01-02 at 12 58 52 PM](https://user-images.githubusercontent.com/65474893/103464607-b65cc480-4cfa-11eb-9738-e0ef15735db5.png)
+
+## Technology: 
+Bootstrap
